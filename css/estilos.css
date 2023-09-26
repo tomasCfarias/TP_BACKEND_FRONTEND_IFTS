@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav{
+    text-align: center;
+    background-color: black;
+    color: antiquewhite;
+}
+
+ul,li{
+    list-style: none;
+}
+
+ul{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+}
+
