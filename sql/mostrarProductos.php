@@ -3,7 +3,7 @@
 
     $conn = conexion();
 
-    $sql = "SELECT * FROM usuarios";
+    $sql = "SELECT * FROM productos";
     $result = $conn -> query($sql);
 
     $conn ->close();
@@ -19,14 +19,13 @@
 </head>
 <link rel="stylesheet" href="../css/mostrarusuarios.css">
 <body>
-
-<a href="/signin.php">VOLVER</a>
     <table class="table-products">
         <tr>
             <th>ID</th>
-            <th>EMAIL</th>
-            <th>USUARIO</th>
-            <th>CONTRASEÑA</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Descripción</th>
         </tr>
    
 <?php
@@ -34,10 +33,11 @@
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row["id"] . " "."</td>";
-        echo "<td>" . $row["email"] ." ". "</td>";
-        echo "<td>" . $row["username"] . " "."</td>";
-        echo "<td>" . $row["password"] ." ". "</td>";
+        echo "<td>" . $row["Id"] . " "."</td>";
+        echo "<td>" . $row["Name"] ." ". "</td>";
+        echo "<td>" . $row["quantity"] . " "."</td>";
+        echo "<td>" . $row["price"] ." ". "</td>";
+        echo "<td>" . $row["description"] ." ". "</td>";
         echo "</tr>"."<br>";
     }
 } else {

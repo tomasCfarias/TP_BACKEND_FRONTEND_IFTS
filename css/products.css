@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+}
+
+.navbar{
+    background-color: rgb(159, 163, 255);
+    padding: 15px;
+    margin-bottom: 1rem;
+}
+
+.products {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(100px,auto);
+
+}
+
+.product-card {
+    margin-left: 2rem;
+    box-shadow: -1px 18px 25px -27px rgba(0,0,0,0.75);
+    border-radius: 5px;
+    width: fit-content;
+    &:hover {
+        cursor: pointer;
+        scale: 1.05;
+    }
+    .img-placeholder {
+        width: 250px;
+        background-color: azure;
+        height: 175px;
+    };
+    
+
+}

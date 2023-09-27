@@ -6,19 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP LOGIN</title>
+    <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
-    <h2>REGISTRO</h2>
     <a href="index.php">VOLVER</a><br>
     
-    <form action="sql/recibirUsuarios.php" method="POST">
+    <form action="sql/recibirUsuarios.php" method="POST" id="user_form">
+        <h2>REGISTRO</h2>
         email
-        <input type="text" name="email" id="email"><br>
+        <input type="email" name="email" id="email"><br>
         usuario
         <input type="text" name="usuario" id="usuario"><br>
         contraseña
-        <input type="text" name="password" id="password"><br>
-        <input type="submit" type="Enviar">
+        <input type="password" name="password" id="password"><br>
+        <input type="submit" value="Enviar">
     </form>
 </body>
 </html>

@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+body {
+    background-color: rgb(53, 53, 53);
+}
+
+.table-products {
+    align-items: center;
+    border: 3px solid black;
+    padding: 30px;
+    table-layout: fixed;
+    margin: auto;
+    background-color: rgb(250, 245, 245);
+    width: 50%;
+    overflow: hidden;
+}
+
+tr:nth-child(even){
+    background-color: rgb(210, 209, 209)
+}
+
+
+th {
+    padding: 5px;
+}
+
+td {
+    text-align: center;
+    padding: 0;
+    overflow: hidden;
+}
+
+.del-btn {
+    color: rgb(254, 41, 41);
+    background-color: rgb(250, 245, 245);
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.product-id:hover {
+    cursor: pointer;
+}
+

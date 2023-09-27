@@ -4,10 +4,11 @@ include("connection.php");
 $conn = conexion(); 
 
 $usuario = $_POST["usuario"];
+echo $usuario;
 $passw = $_POST["password"];
 $email = $_POST["email"];
 
-$sql = "INSERT INTO usuarios (email, usuario, contraseña) VALUES ('$email', '$usuario', '$passw')";
+$sql = "INSERT INTO usuarios (email, username, password) VALUES ('$email', '$usuario', '$passw')";
 
 if ($conn->query($sql) === TRUE) { 
     echo "Registro exitoso. ¡Bienvenido, $usuario!";

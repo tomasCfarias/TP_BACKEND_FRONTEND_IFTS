@@ -4,21 +4,24 @@ body{
     width: 100%;
     box-sizing: border-box;
 }
-
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
 nav{
-    text-align: center;
-    background-color: black;
-    color: antiquewhite;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(236, 236, 236);
+    color: rgb(0, 0, 0);
 }
 
 ul,li{
     list-style: none;
+
 }
 
-ul{
+ul {
     display: flex;
-    justify-content: space-between;
-    width: 50%;
-    margin: auto;
+    gap: 15px;
+    padding: 5px;
 }
-
