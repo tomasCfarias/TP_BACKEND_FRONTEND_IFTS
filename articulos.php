@@ -26,9 +26,9 @@
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo "<div class='product-card'>";
+                    echo "<div class='product-card' id = " . $row["Id"] . ">";
                     echo "<div class='img-placeholder'>"."</div>";
-                    echo "<b>" . $row["Name"] . " "."</b";
+                    echo "<b class= 'product-name'>" . $row["Name"] . " "."</b>";
                     echo "<b> $" . $row["price"] ." ". "</b>";
                     echo "<p> " . $row["description"] . " "."</p>";
                     echo "</div>";
@@ -41,3 +41,5 @@
     </section>
 </body>
 </html>
+
+<script src="articulos.js"></script>

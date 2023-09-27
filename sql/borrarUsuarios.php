@@ -41,6 +41,6 @@
         <input type="submit" value="Borrar">
     </form>
     
-    <a href="signin.php">VOLVER</a>
+    <a href="../index.php">VOLVER</a>
 </body>
 </html>
