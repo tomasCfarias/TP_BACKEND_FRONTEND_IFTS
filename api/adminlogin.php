@@ -10,10 +10,12 @@
         $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
 
         $sql = "SELECT Id FROM admins WHERE User = '$myusername' and Password = '$mypassword'";
+
+
         $result = $conn -> query($sql);
         $row = mysqli_fetch_array($result);
         
-        if (is_array($row)) {
+        if (is_array($row) ) {
             $_SESSION["login_user"] = $myusername;
             $_SESSION["userid"] = $row[0];
 

@@ -6,9 +6,11 @@ $conn = conexion();
 $usuario = $_POST["usuario"];
 echo $usuario;
 $passw = $_POST["password"];
+
+$hash = password_hash($passw, PASSWORD_DEFAULT );
 $email = $_POST["email"];
 
-$sql = "INSERT INTO usuarios (email, username, password) VALUES ('$email', '$usuario', '$passw')";
+$sql = "INSERT INTO usuarios (email, username, password) VALUES ('$email', '$usuario', '$hash')";
 
 if ($conn->query($sql) === TRUE) { 
     echo "Registro exitoso. ¡Bienvenido, $usuario!";
