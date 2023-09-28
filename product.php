@@ -2,7 +2,7 @@
 include("./api/connection.php");
 $conn = conexion();
 $id = $_GET["id"];
-
+session_start();
 $query = "SELECT * FROM productos WHERE  Id = '$id' ";
 
 $req =  mysqli_query($conn,$query);
