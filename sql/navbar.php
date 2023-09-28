@@ -3,8 +3,16 @@
         <nav class="navbar">
             <div class="nav-item">
                 <li><a href="index.php"><b>INICIO</b></a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="signin.php">Sign In</a></li>
+                
+                <?php
+                if(!isset($_SESSION["login_user"])) {
+                    echo("<li><a href='login.php'>Login</a></li>");
+                    echo("<li><a href='signin.php'>Registro</a></li>");
+                }
+                else {
+                    echo("<li><a href='sql/signout.php'>Logout</a></li>");
+                }
+                ?>
             </div>
             <div class="nav-item">
                 <li class = "usuarios">Usuarios

@@ -2,6 +2,11 @@
     include("./sql/connection.php");
     $conn = conexion();
 
+    session_start();
+    if(!isset($_SESSION['login_user'])){ //if login in session is not set
+    header("Location: login.php");
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") { // verifica si el method del forms es POST
         $numero = $_POST["pk"];
         $email = $_POST["email"];
