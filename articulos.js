@@ -7,7 +7,7 @@ cards.forEach(card => {
     card.addEventListener("click",  (e) => {
 
         const productId = (e.currentTarget.id)
-        window.location.href = `sql/product.php?id=${productId}` 
+        window.location.href = `product.php?id=${productId}` 
         
     })
 });

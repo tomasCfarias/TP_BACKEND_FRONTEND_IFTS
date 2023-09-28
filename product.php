@@ -1,5 +1,5 @@
 <?php 
-include("connection.php");
+include("./sql/connection.php");
 $conn = conexion();
 $id = $_GET["id"];
 
@@ -17,7 +17,14 @@ $req =  mysqli_query($conn,$query);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Articulo</title>
+        <link rel="stylesheet" href="css/products.css">
+        <link rel="stylesheet" href="css/navbartienda.css">
     </head>
+    <header>
+        <?php
+            include("sql/navbartienda.php") 
+        ?>
+    </header>
     <body>
         <div>
             <?php

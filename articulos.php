@@ -16,11 +16,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado</title>
     <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/navbartienda.css">
 </head>
 <body>
-    <nav class="navbar">
-        <p>Placeholder</p>
-    </nav>
+    <?php
+        include("sql/navbartienda.php") 
+    ?>
     <section class="products">
         <?php
 
