@@ -4,30 +4,12 @@
 
 a {
     text-decoration: none;
-    color: inherit;
-    
+    color: rgb(0, 0, 0);
+
 }
 body {
     background-color: rgb(53, 53, 53);
 }
-.navbar{
-    background-color: rgb(27, 27, 27);
-    padding: 15px;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    .text-right {
-        display: flex;
-        gap: 15px;
-        :hover {
-            cursor: pointer;
-        }
-    }
-}
-
-.navbar>* {
-        color: rgb(255, 255, 255);
-    }
 
 #user_form {
     display: flex;

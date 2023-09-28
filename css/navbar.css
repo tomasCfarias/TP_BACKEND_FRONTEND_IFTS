@@ -8,7 +8,7 @@ a {
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
-nav{
+.navbar {
     display: flex;
     justify-content: space-between;
     background-color: rgb(236, 236, 236);
@@ -17,11 +17,48 @@ nav{
 
 ul,li{
     list-style: none;
-
+    padding: 0;
 }
 
-ul {
+.nav-item {
     display: flex;
     gap: 15px;
+}
+.dropdown-menu {
+    background-color: rgb(255, 255, 255);
+    width: fit-content;
+    text-align: center;
+    margin-top: 10px;
+    box-shadow: 2px 2px 23px -13px rgba(0,0,0,0.75);
+}
+
+.dropdown-menu>li:hover {
+    background-color: rgb(245, 245, 245);
+}
+.products {
+    position: absolute;
+    right: 0;
+    display: none
+}
+
+.products>li, .users>li {
     padding: 5px;
+}
+
+.users {
+    position: absolute;
+    display: none;
+    right: 6.5%;
+}
+
+.nav-item>* {
+    padding: 10px;
+}
+
+.nav-item>*:hover {
+    cursor: pointer;
+    background-color: gainsboro;
+}
+.usuarios:hover .users , .productos:hover .products {
+    display : block
 }
