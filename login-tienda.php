@@ -13,7 +13,7 @@
     <?php
         include("api/navbartienda.php") 
     ?>
-    <form action="" method="POST" id="user_form">
+    <form action="api/tiendalogin.php" method="POST" id="user_form">
         <h2>LOGIN</h2>
         usuario
         <input type="text" name="usuario" id="usuario"><br>

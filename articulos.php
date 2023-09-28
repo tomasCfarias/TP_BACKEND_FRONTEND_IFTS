@@ -2,7 +2,7 @@
     include("./api/connection.php");
 
     $conn = conexion();
-
+    session_start();
     $sql = "SELECT * FROM productos";
     $result = $conn -> query($sql);
 

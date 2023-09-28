@@ -13,7 +13,7 @@
         $usuario = $_POST["usuario"];
         $password = $_POST["password"];
 
-        $sql = "UPDATE usuarios SET email = '$email', usuario = '$usuario', contraseña = '$password' WHERE id = '$numero'";
+        $sql = "UPDATE usuarios SET email = '$email', username = '$usuario', password = '$password' WHERE id = '$numero'";
         
         if ($conn->query($sql) === TRUE) {
             echo "Actualización exitosa";

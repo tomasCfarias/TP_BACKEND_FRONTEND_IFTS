@@ -11,5 +11,14 @@ a {
     padding: 15px;
     margin-bottom: 1rem;
     display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+.navbar-left {
+    display: flex;
+    gap: 5px;
+}
+.navbar-right {
+    display: flex;
     gap: 5px;
 }
