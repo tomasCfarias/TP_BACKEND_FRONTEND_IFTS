@@ -1,0 +1,19 @@
+- CSS en todo
+- Validaciones de entradas en tabla repetidas
+- Validaciones de campos vacios 
+- Validacion logica de usuarios, mail, contraseña, etc.
+- Proteccion inyeccion sql 
+- Nombrar bien las rutas y traducir todo al mismo idioma
+
+FUNCIONALIDADES 
+- Carro de compras
+- Subir imagenes de productos
+- Borrar y modificar productos
+- Tabla de ordenes de compra
+- Que el usuario pueda cambiar su contraseña
+
+DEL TP 
+
+- Una barra lateral en algún lado
+- Poder crear pdf con la info del crud
+- Excel con información de la base datos
