@@ -1,5 +1,5 @@
 <?php
-    include("./sql/connection.php");
+    include("./api/connection.php");
 
     session_start();
     if(!isset($_SESSION['login_user'])){ //if login in session is not set
@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="./css/navbar.css">
 <body>
     <?php
-        include_once("./sql/navbar.php")
+        include_once("./api/navbar.php")
     ?>
     <table class="table-products">
         <tr>
@@ -53,7 +53,7 @@
         ?>
     </table>
     <?php
-        include_once("./sql/footer.php")
+        include_once("./api/footer.php")
     ?>
 </body>
 </html>

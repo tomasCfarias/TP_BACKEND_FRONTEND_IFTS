@@ -1,5 +1,5 @@
 <?php
-    include("./sql/connection.php");
+    include("./api/connection.php");
 
     $conn = conexion();
 
@@ -20,7 +20,7 @@
 </head>
 <body>
     <?php
-        include("sql/navbartienda.php") 
+        include("api/navbartienda.php") 
     ?>
     <section class="products">
         <?php

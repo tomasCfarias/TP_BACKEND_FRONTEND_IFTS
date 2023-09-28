@@ -1,5 +1,5 @@
 <?php 
-include("./sql/connection.php");
+include("./api/connection.php");
 $conn = conexion();
 $id = $_GET["id"];
 
@@ -22,7 +22,7 @@ $req =  mysqli_query($conn,$query);
     </head>
     <header>
         <?php
-            include("sql/navbartienda.php") 
+            include("api/navbartienda.php") 
         ?>
     </header>
     <body>

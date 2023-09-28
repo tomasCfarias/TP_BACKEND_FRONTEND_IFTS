@@ -11,10 +11,10 @@
 </head>
 <body>
     <?php
-        include_once("./sql/navbar.php")
+        include_once("./api/navbar.php")
     ?>
     
-    <form action="sql/recibirUsuarios.php" method="POST" id="user_form">
+    <form action="api/recibirUsuarios.php" method="POST" id="user_form">
         <h2>REGISTRO</h2>
         email
         <input type="email" name="email" id="email"><br>
@@ -25,7 +25,7 @@
         <input type="submit" value="Enviar">
     </form>
     <?php
-        include_once("./sql/footer.php")
+        include_once("./api/footer.php")
     ?>
 </body>
 </html>

@@ -15,10 +15,10 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
     <link rel="stylesheet" href="./css/navbar.css">
 </head>
     <?php
-        include_once("./sql/navbar.php")
+        include_once("./api/navbar.php")
     ?>
 <body>
-    <form action="./sql/subirProducto.php" method="POST" id="user_form">
+    <form action="./api/subirProducto.php" method="POST" id="user_form">
         <h2>Publicación</h2>
         <label for="usuario">Nombre</label>
         <input type="text" name="nombre" id="nombre">
@@ -32,7 +32,7 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         <input id="user_form_btn" type="submit" value="Enviar"/>
     </form>
     <?php
-        include_once("./sql/footer.php")
+        include_once("./api/footer.php")
     ?>
 </body>
 </html>

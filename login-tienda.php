@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php
-        include("sql/navbartienda.php") 
+        include("api/navbartienda.php") 
     ?>
     <form action="" method="POST" id="user_form">
         <h2>LOGIN</h2>

@@ -1,5 +1,5 @@
 <?php
-    include("./sql/connection.php");
+    include("./api/connection.php");
     $conn = conexion();
 
     session_start();
@@ -35,7 +35,7 @@
 </head>
 <body>
     <?php
-        include_once("./sql/navbar.php")
+        include_once("./api/navbar.php")
     ?>
     Ingrese ID a modificar:
     <form method="post">
@@ -50,7 +50,7 @@
         <input type="submit" value="Modificar">
     </form>
     <?php
-        include_once("./sql/footer.php")
+        include_once("./api/footer.php")
     ?>
 </body>
 </html>

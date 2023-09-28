@@ -1,5 +1,5 @@
 <?php
-    include("./sql/connection.php");
+    include("./api/connection.php");
     $conn = conexion();
 
     session_start();
@@ -41,7 +41,7 @@
 </head>
 <body>
     <?php
-        include_once("./sql/navbar.php")
+        include_once("./api/navbar.php")
     ?>
     ingresar ID a borrar
     <form  method="post">
@@ -49,7 +49,7 @@
         <input type="submit" value="Borrar">
     </form>
     <?php
-        include_once("./sql/footer.php")
+        include_once("./api/footer.php")
     ?>
 </body>
 </html>

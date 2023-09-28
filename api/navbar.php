@@ -10,7 +10,7 @@
                     echo("<li><a href='signin.php'>Registro</a></li>");
                 }
                 else {
-                    echo("<li><a href='sql/signout.php'>Logout</a></li>");
+                    echo("<li><a href='api/signout.php'>Logout</a></li>");
                 }
                 ?>
             </div>

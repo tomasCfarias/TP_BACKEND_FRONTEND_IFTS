@@ -11,9 +11,9 @@
 </head>
 <body>
     <?php
-        include_once("./sql/navbar.php")
+        include_once("./api/navbar.php")
     ?>
-    <form action="sql/adminlogin.php" method="POST" id="user_form">
+    <form action="api/adminlogin.php" method="POST" id="user_form">
         <h2>Sistema Admin</h2>
         usuario
         <input type="text" name="usuario" id="usuario"><br>
@@ -22,7 +22,7 @@
         <input type="submit" id ="enviar" value="Enviar">
     </form>
     <?php
-        include_once("./sql/footer.php")
+        include_once("./api/footer.php")
     ?>
 </body>
 </html>

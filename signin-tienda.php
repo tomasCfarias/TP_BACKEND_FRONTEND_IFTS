@@ -11,9 +11,9 @@
 </head>
 <body>
     <?php
-        include("sql/navbartienda.php") 
+        include("api/navbartienda.php") 
     ?>
-    <form action="sql/recibirUsuarios.php" method="POST" id="user_form">
+    <form action="api/recibirUsuarios.php" method="POST" id="user_form">
         <h2>REGISTRO</h2>
             email
             <input type="email" name="email" id="email"><br>
