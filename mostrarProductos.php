@@ -1,5 +1,5 @@
 <?php
-    include("connection.php");
+    include("./sql/connection.php");
 
     $conn = conexion();
 
@@ -17,8 +17,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mostrar Usuarios</title>
 </head>
-<link rel="stylesheet" href="../css/mostrarusuarios.css">
+<link rel="stylesheet" href="./css/mostrarusuarios.css">
+<link rel="stylesheet" href="./css/navbar.css">
 <body>
+    <?php
+        include_once("./sql/navbar.php")
+    ?>
     <table class="table-products">
         <tr>
             <th>ID</th>

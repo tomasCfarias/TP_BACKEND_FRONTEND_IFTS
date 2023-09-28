@@ -1,5 +1,5 @@
 <?php
-    include("connection.php");
+    include("./sql/connection.php");
     $conn = conexion();
 
 
@@ -33,14 +33,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrar Usuario</title>
+    <link rel="stylesheet" href="./css/navbar.css">
 </head>
 <body>
+    <?php
+        include_once("./sql/navbar.php")
+    ?>
     ingresar ID a borrar
     <form  method="post">
         <input type="text" name="id" id="id">
         <input type="submit" value="Borrar">
     </form>
-    
-    <a href="../index.php">VOLVER</a>
 </body>
 </html>

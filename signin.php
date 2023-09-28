@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP LOGIN</title>
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/navbar.css">
 </head>
 <body>
-    <a href="index.php">VOLVER</a><br>
+    <?php
+        include_once("./sql/navbar.php")
+    ?>
     
     <form action="sql/recibirUsuarios.php" method="POST" id="user_form">
         <h2>REGISTRO</h2>

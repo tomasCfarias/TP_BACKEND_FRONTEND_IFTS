@@ -6,16 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/newproduct.css">
+    <link rel="stylesheet" href="./css/newproduct.css">
+    <link rel="stylesheet" href="./css/navbar.css">
 </head>
+    <?php
+        include_once("./sql/navbar.php")
+    ?>
 <body>
-    <nav class="navbar">
-        <p>Placeholder</p>
-        <div class="text-right">
-            <a href="">PUBLICAR</a>
-            <a href="./sql/mostrarProductos.php">LISTADO</a>
-        </div>
-    </nav>
     <form action="./sql/subirProducto.php" method="POST" id="user_form">
         <h2>Publicación</h2>
         <label for="usuario">Nombre</label>
