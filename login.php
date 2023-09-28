@@ -13,7 +13,7 @@
     <?php
         include_once("./sql/navbar.php")
     ?>
-    <form action="" method="POST" id="user_form">
+    <form action="sql/adminlogin.php" method="POST" id="user_form">
         <h2>LOGIN</h2>
         usuario
         <input type="text" name="usuario" id="usuario"><br>
