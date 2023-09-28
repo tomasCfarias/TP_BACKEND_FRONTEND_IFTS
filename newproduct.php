@@ -31,5 +31,8 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
     
         <input id="user_form_btn" type="submit" value="Enviar"/>
     </form>
+    <?php
+        include_once("./sql/footer.php")
+    ?>
 </body>
 </html>

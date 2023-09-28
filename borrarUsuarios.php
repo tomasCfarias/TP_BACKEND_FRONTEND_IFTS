@@ -48,5 +48,8 @@
         <input type="text" name="id" id="id">
         <input type="submit" value="Borrar">
     </form>
+    <?php
+        include_once("./sql/footer.php")
+    ?>
 </body>
 </html>

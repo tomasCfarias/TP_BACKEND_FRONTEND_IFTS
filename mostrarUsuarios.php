@@ -52,5 +52,8 @@
         }
         ?>
     </table>
+    <?php
+        include_once("./sql/footer.php")
+    ?>
 </body>
 </html>

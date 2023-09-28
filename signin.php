@@ -24,5 +24,8 @@
         <input type="password" name="password" id="password"><br>
         <input type="submit" value="Enviar">
     </form>
+    <?php
+        include_once("./sql/footer.php")
+    ?>
 </body>
 </html>

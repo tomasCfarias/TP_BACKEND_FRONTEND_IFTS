@@ -14,12 +14,15 @@
         include_once("./sql/navbar.php")
     ?>
     <form action="sql/adminlogin.php" method="POST" id="user_form">
-        <h2>LOGIN</h2>
+        <h2>Sistema Admin</h2>
         usuario
         <input type="text" name="usuario" id="usuario"><br>
         contraseña
         <input type="password" name="password" id="password">
-        <input type="submit" value="Enviar">
+        <input type="submit" id ="enviar" value="Enviar">
     </form>
+    <?php
+        include_once("./sql/footer.php")
+    ?>
 </body>
 </html>

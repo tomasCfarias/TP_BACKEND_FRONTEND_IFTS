@@ -49,6 +49,9 @@
         <br>
         <input type="submit" value="Modificar">
     </form>
+    <?php
+        include_once("./sql/footer.php")
+    ?>
 </body>
 </html>
 
