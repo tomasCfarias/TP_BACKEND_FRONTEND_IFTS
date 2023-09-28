@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP LOGIN</title>
     <link rel="stylesheet" href="./css/products.css">
+    <link rel="stylesheet" href="css/navbartienda.css">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="articulos.php"><b>Tienda</b></a>
-        <a href="login-tienda.php">Login</a>
-    </nav>
+    <?php
+        include("sql/navbartienda.php") 
+    ?>
     <form action="" method="POST" id="user_form">
         <h2>LOGIN</h2>
         usuario
