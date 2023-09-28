@@ -29,6 +29,6 @@ $conn->close();
     <title>Registro</title>
 </head>
 <body>
-    <a href="mostrarUsuarios.php">TABLA DE USUARIOS</a>
+    <a href="../mostrarUsuarios.php">TABLA DE USUARIOS</a>
 </body>
 </html>

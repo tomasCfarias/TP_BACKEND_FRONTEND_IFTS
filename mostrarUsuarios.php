@@ -28,7 +28,7 @@
             <th>ID</th>
             <th>EMAIL</th>
             <th>USUARIO</th>
-            <th>CONTRASEÑA</th>
+
         </tr>
    
         <?php
@@ -39,7 +39,7 @@
                 echo "<td>" . $row["id"] . " "."</td>";
                 echo "<td>" . $row["email"] ." ". "</td>";
                 echo "<td>" . $row["username"] . " "."</td>";
-                echo "<td>" . $row["password"] ." ". "</td>";
+
                 echo "</tr>"."<br>";
             }
         } else {
