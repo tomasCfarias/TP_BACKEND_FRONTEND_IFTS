@@ -55,3 +55,8 @@ ul,li{
 .productos:hover .products {
     display : block
 }
+
+ul>a {
+    background-color: rgb(207, 207, 207);
+    margin-bottom: 20px;
+}

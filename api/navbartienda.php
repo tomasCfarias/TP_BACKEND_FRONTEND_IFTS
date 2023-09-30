@@ -15,7 +15,7 @@
                 echo("</div>");
                 echo("<div class='navbar-item'>");  
                 ?>
-                <li class = "productos">Productos
+                <div class = "productos">Productos
                     <ul class="dropdown-menu products">
                         <?php
                         if(empty($_SESSION["cart_list"])) {
@@ -27,8 +27,9 @@
                          }
                         }
                         ?>
+                        <a href="checkout.php">Checkout</a>
                     </ul>
-                </li>
+                    </div>
                 <?php
                 echo("<a href='api/signouttienda.php'>Logout</a>");
                 echo("</div>");
