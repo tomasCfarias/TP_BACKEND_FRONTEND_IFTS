@@ -22,7 +22,7 @@
     <?php
         include("api/navbartienda.php") 
     ?>
-    <section class="products">
+    <section class="products-list">
         <?php
 
             if ($result->num_rows > 0) {

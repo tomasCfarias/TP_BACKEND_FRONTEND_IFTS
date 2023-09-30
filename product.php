@@ -7,8 +7,6 @@ $query = "SELECT * FROM productos WHERE  Id = '$id' ";
 
 $req =  mysqli_query($conn,$query);
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +24,19 @@ $req =  mysqli_query($conn,$query);
         ?>
     </header>
     <body>
-        <div>
-            <?php
+        <?php
             $res = $req->fetch_array();
+            echo("<div>");
             echo "<p> Name: " . $res["Name"] . " "."</p>";
             echo "<p> Price: " . $res["price"] ." ". "</p>";
             echo "<p> Quantity: " . $res["quantity"] . " "."</p>";
         ?>
-    </div>
+        <form id="carrito">
+            <input type="number" name="quantity" value="1" min="1" max="<?=$res['quantity']?>" placeholder="Quantity" required>
+            <input type="hidden" name="id" value="<?=$res['Id']?>">
+            <input type="hidden" name="product_name" value="<?=$res['Name']?>">
+            <button id="add-btn">Agregar a Carrito</button>
+        </form>
 </body>
 </html>
+<script src="acarrito.js"></script>

@@ -8,17 +8,50 @@ a {
 }
 .navbar{
     background-color: rgb(159, 163, 255);
-    padding: 15px;
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
     gap: 5px;
 }
-.navbar-left {
+.navbar-item {
     display: flex;
     gap: 5px;
 }
-.navbar-right {
-    display: flex;
-    gap: 5px;
+
+.navbar-item>* {
+    padding: 10px;
+}
+
+
+.dropdown-menu {
+    background-color: rgb(255, 255, 255);
+    width: fit-content;
+    text-align: center;
+    margin-top: 10px;
+    box-shadow: 2px 2px 23px -13px rgba(0,0,0,0.75);
+}
+
+.dropdown-menu>li:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+ul,li{
+    list-style: none;
+    padding: 0;
+}
+
+.products {
+    position: absolute;
+    display: none;
+}
+
+.products>li, .users>li {
+    padding: 5px;
+}
+
+.productos:hover {
+    cursor: pointer;
+}
+.productos:hover .products {
+    display : block
 }

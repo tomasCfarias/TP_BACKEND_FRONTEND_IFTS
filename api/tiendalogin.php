@@ -20,7 +20,7 @@
             if (password_verify($mypassword,$row[1])) {
                 $_SESSION["login_user_tienda"] = $myusername;
                 $_SESSION["userid_tienda"] = $row[0];
-
+                $_SESSION["cart_list"] = [];
                 header("location: ../articulos.php");
             }
             else {
