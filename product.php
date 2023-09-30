@@ -37,6 +37,8 @@ $req =  mysqli_query($conn,$query);
             <input type="hidden" name="product_name" value="<?=$res['Name']?>">
             <button id="add-btn">Agregar a Carrito</button>
         </form>
+        </div>
 </body>
 </html>
+
 <script src="acarrito.js"></script>
