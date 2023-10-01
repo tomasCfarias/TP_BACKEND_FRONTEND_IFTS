@@ -1,11 +1,7 @@
 
-const cards = Array.from(document.getElementsByClassName("product-card"))
-const cardNames =Array.from(document.getElementsByClassName("product-name")).map(card => card.textContent )
-
-
+const cards = document.getElementsByName("product-card")
 cards.forEach(card => {
     card.addEventListener("click",  (e) => {
-
         const productId = (e.currentTarget.id)
         window.location.href = `product.php?id=${productId}` 
         

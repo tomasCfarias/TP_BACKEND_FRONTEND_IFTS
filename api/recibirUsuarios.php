@@ -12,25 +12,23 @@ $email = $_POST["email"];
 
 $sql = "INSERT INTO usuarios (email, username, password) VALUES ('$email', '$usuario', '$hash')";
 
-if ($conn->query($sql) === TRUE) { 
-    echo "Registro exitoso. ¡Bienvenido, $usuario!";
-} else {
+if ($conn->query($sql) === FALSE) { 
     echo "Error al registrar: " . $conn->error; 
+} else {
+    echo("<script type='text/javascript'>alert('Registro exitoso. Por favor ingrese.')</script>");
 }
 
 // Cerrar la conexión
 $conn->close();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Document</title>
 </head>
-<body>
-    <a href="../mostrarUsuarios.php">TABLA DE USUARIOS</a>
-</body>
+<script type='text/javascript'>window.location.href = "../login-tienda.php"</script>"
+
 </html>

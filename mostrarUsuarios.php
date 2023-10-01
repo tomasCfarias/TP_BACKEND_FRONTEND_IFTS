@@ -45,7 +45,7 @@
                 echo "<td>" . $row["email"] ." ". "</td>";
                 echo "<td>" . $row["username"] . " "."</td>";
 
-                echo "</tr>"."<br>";
+                echo "</tr>";
             }
         } else {
             echo "NO HAY REGISTROS";
