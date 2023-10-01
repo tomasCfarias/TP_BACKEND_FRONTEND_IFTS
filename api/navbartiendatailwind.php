@@ -5,7 +5,7 @@
     <nav class="bg-white border-gray-200">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="articulos.php" class="flex items-center">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Tienda</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap">Tienda</span>
     </a>
     <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
@@ -33,7 +33,7 @@
 <nav class="bg-white border-gray-200">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="articulos.php" class="flex items-center">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Tienda</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap ">Tienda</span>
     </a>
     <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
@@ -48,10 +48,10 @@
   </button>
             <!-- Dropdown menu -->
             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                 <?php
                         if(empty($_SESSION["cart_list"])) {
-                          echo("<li class='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>Vacio</li>");
+                          echo("<li class='block px-4 py-2 hover:bg-gray-100'>Vacio</li>");
                         }
                         else {
                          $total_price = 0;
