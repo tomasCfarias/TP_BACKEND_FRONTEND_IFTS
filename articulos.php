@@ -23,10 +23,10 @@
         include("api/navbartiendatailwind.php") 
     ?>
     <div class="flex">
-    <div class="mt-2 mb-4 lg:w-44">
+    <div class="my-2 lg:w-44">
     <div class="hidden lg:block ml-2 border border-gray-200 bg-white rounded h-full shadow">Algo..</div>
     </div>
-    <section class="my-2 ml-2 lg:ml-5  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+    <section class="my-2 mx-auto lg:ml-5  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
         <?php
 
             if ($result->num_rows > 0) {
@@ -51,6 +51,9 @@
         ?>
     </section>
     </div>
+    <?php
+        include("api/footertienda.php") 
+    ?>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 

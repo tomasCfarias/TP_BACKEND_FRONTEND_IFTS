@@ -16,6 +16,7 @@
 
 </head>
 <body>
+    <div class="min-h-screen">
     <?php 
     include_once("api/navbartiendatailwind.php");
     ?>
@@ -48,6 +49,10 @@
         echo('<input class=" ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none hover:cursor-pointer" type="button" value="Comprar">');
        }
       ?>
+    </div>
+    <?php
+        include("api/footertienda.php") 
+    ?>
     </div>
       <script src="https://cdn.tailwindcss.com"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
