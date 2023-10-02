@@ -39,15 +39,15 @@
     <?php
         include_once("./api/navbar.php")
     ?>
-        <form action="modificarUsuarios.php" method="POST" id="user_form">
+    <form action="modificarUsuarios.php" method="POST" id="user_form">
         <h2> Modificación de Usuario:</h2>
-        id de usuario a modificar
+        <label for="usuario">id de usuario a modificar</label>
         <input type="text" name="id"><br>
-        email
+        <label for="email">email</label>
         <input type="email" name="email" id="usuario"><br>
-        usuario
+        <label for="usuario">usuario</label>
         <input type="text" name="usuario" id="usuario"><br>
-        contraseña
+        <label for="password">contraseña</label>
         <input type="password" name="password" id="password">
         <input type="submit" id ="enviar" value="Enviar">
     </form>

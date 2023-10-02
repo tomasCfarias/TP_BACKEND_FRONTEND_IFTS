@@ -3,8 +3,15 @@
 
     $conn = conexion();
     session_start();
-    $sql = "SELECT * FROM productos";
+    $pagenumber = empty($_GET["page"]) ? 1 : $_GET["page"];
+    $offset = 6 * $pagenumber == 6 ? 0 : 6 * ($pagenumber - 1);
+    $sql = "SELECT * FROM productos LIMIT $offset,6";
     $result = $conn -> query($sql);
+
+    $query = "SELECT * FROM productos";  
+    $res = mysqli_query($conn, $query);  
+    $number_of_result = mysqli_num_rows($res);  
+    $number_of_pages = ceil($number_of_result / 6); 
 
     $conn ->close();
 ?>
@@ -51,6 +58,39 @@
         ?>
     </section>
     </div>
+    <nav class="flex justify-center" aria-label="Page navigation example">
+    <ul class="flex items-center -space-x-px h-10 text-base">
+        <li>
+        <a href='articulos.php?page=<?php echo $pagenumber - 1 ?>' class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 <?php if($pagenumber == 1) echo 'bg-gray-100'?> border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 <?php if($pagenumber == 1) echo 'pointer-events-none'?>">
+            <span class="sr-only">Previous</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 1 1 5l4 4"/>
+            </svg>
+        </a>
+        </li>
+        <?php 
+        for($page = 1; $page<= $number_of_pages; $page++) {
+        if ($page == $pagenumber) {
+            echo('<li>
+        <a href="articulos.php?page='. $page .'" class="z-10 flex items-center justify-center px-4 h-10 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">'. $page .'</a>
+        </li>');
+        }
+        else { echo('<li>
+        <a href="articulos.php?page='. $page .'" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">'. $page .'</a>
+        </li>');
+        }
+    }
+        ?>
+        <li>
+        <a href='articulos.php?page=<?php echo $pagenumber + 1 ?>' class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 <?php if($pagenumber == $number_of_pages) echo 'bg-gray-100'?> border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 <?php if($pagenumber == $number_of_pages) echo 'pointer-events-none'?>">
+            <span class="sr-only">Next</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 9 4-4-4-4"/>
+            </svg>
+        </a>
+        </li>
+    </ul>
+    </nav>
     <?php
         include("api/footertienda.php") 
     ?>
