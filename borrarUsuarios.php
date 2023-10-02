@@ -37,16 +37,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrar Usuario</title>
+    <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/navbar.css">
 </head>
 <body>
     <?php
         include_once("./api/navbar.php")
     ?>
-    ingresar ID a borrar
-    <form  method="post">
-        <input type="text" name="id" id="id">
-        <input type="submit" value="Borrar">
+    <form action="borrarUsuarios.php" method="POST" id="user_form">
+        <h2> Borrar Usuario:</h2>
+        <p>Usuario a borrar</p>
+        <input type="text" name="id"><br>
+        <input type="submit" id ="enviar" value="Enviar">
     </form>
     <?php
         include_once("./api/footer.php")

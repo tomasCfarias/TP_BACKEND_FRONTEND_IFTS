@@ -1,9 +1,17 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['login_user_tienda'])){ //if login in session is not set
+      header("Location: login-tienda.php");
+      }  
+      
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-      $id = $_POST["id"];
-      unset($_SESSION["cart_list"]["$id"]);
-    }
+
+      if(isset($_POST["id"])) {
+        $id = $_POST["id"];
+        unset($_SESSION["cart_list"]["$id"]);
+      }
+    } 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +29,23 @@
     include_once("api/navbartiendatailwind.php");
     ?>
     <div class="ml-8 mr-8 border rounded">
+     
     <?php
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+      if(!isset($_POST["id"])) {
+        ?> 
+        <div class=" bg-green-100 border border-green-400 text-green-700 mx-4 my-2 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Listo!</strong>
+            <span class="block sm:inline">Gracias por tu compra.</span>
+        </div>  
+        
+        <?php
+        $_SESSION["cart_list"] = [];
+      }
+    }
+
     if(empty($_SESSION["cart_list"])) {
-        echo("<p>Vacio</p>");
+        echo("<p class='p-5 font-medium'>No hay elementos en el carrito..</p>");
       }
       else {
         $total_price = 0;
@@ -32,21 +54,25 @@
              echo('<div class="flex gap-1 items-center">');
              echo("<p>". $val[1] ." </p>");
              $price = $val[2] * $val[3];
-             echo(" <div class='font-bold'> x".$val[2]."</div>");
-             echo("<div class='ml-auto font-bold'> $". $price ."</div>");
+             echo(" <div class='font-semibold'> x".$val[2]."</div>");
+             echo("<div class='ml-auto font-medium'> $". $price ."</div>");
              ?>
              <form method="POST" action="checkout.php">
              <input type="hidden" name="id" value="<?=$val['0']?>">
              <?php
-             echo('<button class=" ml-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-1.5 py-0.5 mr-1 mb-1 focus:outline-none hover:cursor-pointer" type="submit" name="eliminar">Eliminar</button>
+             echo('<button class=" ml-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-lg text-xs px-1.5 py-0.5 mr-1 mb-1 focus:outline-none hover:cursor-pointer" type="submit" name="eliminar">Eliminar</button>
              ');
              echo("</form>");
              echo("</div>");
              echo("</li>"); 
              $total_price+= $val[2]*$val[3];
         }
-        echo("<li class='flex block font-bold px-4 py-2'> Total: <span class='ml-auto'>$".$total_price."</span></li>");
-        echo('<input class=" ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none hover:cursor-pointer" type="button" value="Comprar">');
+        echo("<li class='flex block font-semibold px-4 py-2'> Total: <span class='ml-auto'>$".$total_price."</span></li>");
+        ?>
+        <form method="POST" action="checkout.php">
+        <button class=" ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none hover:cursor-pointer" type="submit" >Comprar</button>
+        </form>
+        <?php
        }
       ?>
     </div>

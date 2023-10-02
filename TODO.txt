@@ -10,10 +10,7 @@ FUNCIONALIDADES
 - Subir imagenes de productos
 - Borrar y modificar productos
 - Tabla de ordenes de compra
-- Que el usuario pueda cambiar su contraseña
 
 DEL TP 
-
-- Una barra lateral en algún lado
 - Poder crear pdf con la info del crud
 - Excel con información de la base datos

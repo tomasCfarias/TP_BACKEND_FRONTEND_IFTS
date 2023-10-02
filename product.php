@@ -3,6 +3,7 @@ include("./api/connection.php");
 $conn = conexion();
 $id = $_GET["id"];
 session_start();
+$incart = key_exists("$id",$_SESSION["cart_list"]) ? intval($_SESSION["cart_list"]["$id"][2]) : 0;
 $query = "SELECT * FROM productos WHERE  Id = '$id' ";
 
 $req =  mysqli_query($conn,$query);
@@ -26,20 +27,22 @@ $req =  mysqli_query($conn,$query);
         <div class="ml-2 lg:ml-8 flex md:flex-row lg: flex-col">
         <?php
             $res = $req->fetch_array();
+            $stockInDB = intval($res['quantity']);
+            $stock = $stockInDB - $incart;
             ?>
             <img class="border p-8 rounded-t-lg h-auto w-full max-w-lg" src="img/boca.jfif" alt="product image" />
-            <?php
             
-            echo("<div class='flex flex-col lg:ml-14'>");
+            <?php
+            echo("<div class='flex flex-col lg:ml-14 w-full'>");
             echo "<p class='font-bold text-4xl'> " . $res["Name"] . " "."</p>";
             echo "<p class='text-xl font-semibold '> $" . $res["price"] ." ". "</p>";
             echo'<p class="mb-3 text-xl md:w-6/12 text-gray-500 md:mt-5">'. $res["description"] .'</p>';
-        ?>
+            ?>
             
 
         <form id="carrito" class="mt-auto">
-            <p> <span class='font-semibold mt-auto'>Stock</span>: <?php echo $res["quantity"] ?> </p>
-            <input class= "rounded invalid:bg-red-200" id="stock" type="number" name="quantity" value="1" min="1" max="<?=$res['quantity']?>" placeholder="Quantity" required>
+            <p> <span class='font-semibold mt-auto'>Stock</span>: <?php echo $stock ?> </p>
+            <input class= "rounded invalid:bg-red-200" id="stock" type="number" name="quantity" value="1" min="1" max="<?= $stock ?>" placeholder="Quantity" required>
             <input type="hidden" name="id" value="<?=$res['Id']?>">
             <input type="hidden" name="price" value="<?=$res['price']?>">
             <input type="hidden" name="product_name" value="<?=$res['Name']?>">

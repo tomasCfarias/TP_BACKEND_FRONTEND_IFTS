@@ -22,6 +22,7 @@
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
     <form class="space-y-6" action="login-tienda.php" method="POST">
+      
     <?php 
       //Check email format
       if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,26 +31,26 @@
       
       if (!filter_var($myemail, FILTER_VALIDATE_EMAIL)) {
           ?>
+
           <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">Error!</strong>
             <span class="block sm:inline">Formato de email invalido.</span>
           </div> 
       
 <?php
- }
-      
-      else {
-
+    } else {
+    ?> 
+    <?php  
           $sql = "SELECT id, password FROM usuarios WHERE email = '$myemail'";
           $result = $conn -> query($sql);
           $row = mysqli_fetch_array($result);
          
-          if (is_array($row)) {
-              if (password_verify($mypassword,$row[1])) {
-                  $_SESSION["login_user_tienda"] = $myemail;
-                  $_SESSION["userid_tienda"] = $row[0];
-                  header("location: articulos.php");
-              }
+
+          if (is_array($row) && password_verify($mypassword,$row[1])) {
+            $_SESSION["login_user_tienda"] = $myemail;
+            $_SESSION["userid_tienda"] = $row[0];
+            header("location: articulos.php");
+          }
              
           else {
               ?>
@@ -59,7 +60,7 @@
             </div> 
           <?php
           }
-        }
+        
       }
     }    
       ?>

@@ -9,8 +9,8 @@ add.addEventListener("click", (e) => {
     const form = Array.from(document.forms["carrito"])
     const formData = new FormData()
     
-    console.log(form[0].value)
-    if(Number(form[0].value) <= Number(stock.max) || Number(form[0].value) > 0) {
+
+    if(Number(form[0].value) <= Number(stock.max) && Number(form[0].value) >= 1) {
     formData.append("quantity",form[0].value)
     formData.append("id",form[1].value)
     formData.append("price",form[2].value)
