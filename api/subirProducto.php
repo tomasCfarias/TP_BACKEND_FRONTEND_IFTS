@@ -3,8 +3,8 @@
 include("connection.php");
 $conn = conexion(); 
 
-$name = $_POST["nombre"];
 
+$name = $_POST["nombre"];
 $price = $_POST["precio"];
 $quantity = $_POST["cantidad"];
 $description = $_POST["descripcion"];
