@@ -6,9 +6,7 @@
 - Nombrar bien las rutas y traducir todo al mismo idioma
 
 FUNCIONALIDADES 
-- Carro de compras
 - Subir imagenes de productos
-- Borrar y modificar productos
 - Tabla de ordenes de compra
 
 DEL TP 

@@ -24,9 +24,9 @@
     ?>
     <div class="flex">
     <div class="my-2 lg:w-44">
-    <div class="hidden lg:block ml-2 border border-gray-200 bg-white rounded h-full shadow">Algo..</div>
+    <div class="hidden lg:block ml-2 lg:ml-3 border border-gray-200 bg-white rounded h-full shadow">Algo..</div>
     </div>
-    <section class="my-2 mx-auto lg:ml-5  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+    <section class="my-2 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
         <?php
 
             if ($result->num_rows > 0) {

@@ -3,7 +3,14 @@ include("./api/connection.php");
 $conn = conexion();
 $id = $_GET["id"];
 session_start();
-$incart = key_exists("$id",$_SESSION["cart_list"]) ? intval($_SESSION["cart_list"]["$id"][2]) : 0;
+
+if(isset($_SESSION['login_user_tienda'] ) && !empty($_SESSION["cart_list"])){ 
+    $incart = key_exists("$id",$_SESSION["cart_list"]) ? intval($_SESSION["cart_list"]["$id"][2]) : 0;
+}
+else {
+    $incart = 0;
+}
+    
 $query = "SELECT * FROM productos WHERE  Id = '$id' ";
 
 $req =  mysqli_query($conn,$query);

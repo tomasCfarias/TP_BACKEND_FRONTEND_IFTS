@@ -41,7 +41,7 @@
     ?>
         <form action="modificarUsuarios.php" method="POST" id="user_form">
         <h2> Modificación de Usuario:</h2>
-        id
+        id de usuario a modificar
         <input type="text" name="id"><br>
         email
         <input type="email" name="email" id="usuario"><br>
