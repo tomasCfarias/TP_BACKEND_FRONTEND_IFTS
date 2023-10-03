@@ -9,6 +9,14 @@
         $myusername = mysqli_real_escape_string($conn,$_POST['usuario']);
         $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
 
+        if(empty($myusername)){
+            header("Location: login.php?error=Ingrese un usuario");
+            exit();
+        }else if(empty($mypassword)){
+            header("Location: login.php?error=Ingrese una contraseña");
+            exit();
+        }
+
         $sql = "SELECT Id FROM admins WHERE User = '$myusername' and Password = '$mypassword'";
 
 
@@ -22,7 +30,8 @@
             header("location: index.php");
         }
         else {
-            echo("<div>Login incorrecto.</div>");
+            header("Location: login.php?error=Login invalido");
+            exit();
         }
 
     }
@@ -45,6 +54,9 @@
     ?>
     <form action="login.php" method="POST" id="user_form">
         <h2>Sistema Admin</h2>
+        <?php if(isset($_GET['error'])){ ?>
+            <p class="error"><?php echo $_GET['error']; ?></p>
+        <?php } ?>
         usuario
         <input type="text" name="usuario" id="usuario"><br>
         contraseña

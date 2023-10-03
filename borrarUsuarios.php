@@ -12,10 +12,16 @@
         if(isset($_POST["id"])) {
             $numero = $_POST["id"];
 
-            // Utilizar una consulta preparada para evitar la inyección SQL
-            $sql = "DELETE FROM usuarios WHERE id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $numero);
+            $sqlSelect = "SELECT * FROM usuarios WHERE id = $numero";
+            $result = $conn->query($sqlSelect);
+            if ($result->num_rows > 0) {
+                $sql = "DELETE FROM usuarios WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $numero);
+            } else {
+                header("Location: borrarUsuarios.php?error=No existe este usuario");
+                exit();
+            }
 
             if ($stmt->execute()) {
                 echo "Se borró el registro correctamente.";
@@ -46,6 +52,9 @@
     ?>
     <form action="borrarUsuarios.php" method="POST" id="user_form">
         <h2> Borrar Usuario:</h2>
+        <?php if(isset($_GET['error'])){ ?>
+            <p class="error"><?php echo $_GET['error']; ?></p>
+        <?php } ?>
         <p>Usuario a borrar</p>
         <input type="text" name="id"><br>
         <input type="submit" id ="enviar" value="Enviar">
