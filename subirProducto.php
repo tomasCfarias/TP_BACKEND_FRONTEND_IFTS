@@ -10,7 +10,7 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Publicar Producto</title>
     <link rel="stylesheet" href="./css/newproduct.css">
     <link rel="stylesheet" href="./css/navbar.css">
 </head>

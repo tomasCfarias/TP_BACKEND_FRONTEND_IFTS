@@ -1,6 +1,8 @@
 <?php
-    session_start();
-    $name = $_POST["name"];
+
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["product_name"];
     $id = $_POST["id"];
     $quantity = $_POST["quantity"];
     $price = $_POST["price"];
@@ -17,5 +19,6 @@
         else {
             $_SESSION["cart_list"]["$id"][2] = $_SESSION["cart_list"]["$id"][2] + intval($_POST["quantity"]);
         }
+    }
     }
 ?>
