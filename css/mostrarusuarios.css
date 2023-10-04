@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -9,6 +10,7 @@ a {
 body {
     background-color: rgb(53, 53, 53);
 }
+
 
 .table-products {
     align-items: center;
@@ -48,3 +50,14 @@ td {
     cursor: pointer;
 }
 
+#crudM{
+    background-color: rgb(255, 217, 135);
+    padding: 6px;
+    font-weight: bold;
+}
+
+#crudBorrar{
+    background-color: rgb(242, 91, 91);
+    padding: 6px;
+    font-weight: bold;
+}

@@ -20,6 +20,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    </style>
     <title>Mostrar Usuarios</title>
 </head>
 <link rel="stylesheet" href="./css/mostrarusuarios.css">
@@ -48,8 +51,8 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["quantity"] . " "."</td>";
         echo "<td>" . $row["price"] ." ". "</td>";
         echo "<td>" . $row["description"] ." ". "</td>";
-        echo "<td><a href='modificarProducto.php?id=" . $row['Id'] . "'>MODIFICAR</a></td>";
-        echo "<td><a href='borrarProducto.php?id=" . $row['Id'] . "'>BORRAR</a></td>";
+        echo "<td><a href='modificarProducto.php?id=" . $row['Id'] . "' id = 'crudM'>MODIFICAR</a></td>";
+        echo "<td><a href='borrarProducto.php?id=" . $row['Id'] . "'id='crudBorrar'>BORRAR</a></td>";
         echo "</tr>"."<br>";
     }
 } else {
