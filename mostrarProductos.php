@@ -29,6 +29,7 @@
         include_once("./api/navbar.php")
     ?>
     <table class="table-products">
+    <a href="subirProducto.php">Nuevo Articulo</a>
         <tr>
             <th>ID</th>
             <th>Nombre</th>
@@ -47,6 +48,8 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["quantity"] . " "."</td>";
         echo "<td>" . $row["price"] ." ". "</td>";
         echo "<td>" . $row["description"] ." ". "</td>";
+        echo "<td><a href='modificarProducto.php?id=" . $row['Id'] . "'>MODIFICAR</a></td>";
+        echo "<td><a href='borrarProducto.php?id=" . $row['Id'] . "'>BORRAR</a></td>";
         echo "</tr>"."<br>";
     }
 } else {

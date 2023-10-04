@@ -1,59 +1,75 @@
 <?php
-    include("./api/connection.php");
-    $conn = conexion();
+include("./api/connection.php");
+$conn = conexion();
 
-    session_start();
-    if(!isset($_SESSION['login_user'])){ //if login in session is not set
+session_start();
+if (!isset($_SESSION['login_user'])) {
     header("Location: login.php");
+    exit(); 
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $numero = $_POST["id"];
+    $email = $_POST["email"];
+    $usuario = $_POST["usuario"];
+    $password = $_POST["password"];
+
+    // Modificamos la consulta para usar una consulta preparada
+    $sql = "UPDATE usuarios SET email = ?, username = ?, password = ? WHERE id = ?";
+   
+    // Preparamos la consulta
+    $stmt = $conn->prepare($sql);
+
+    // Vinculamos los valores a la consulta
+    $stmt->bind_param("sssi", $email, $usuario, $password, $numero);
+
+    // Ejecutamos la consulta
+    if ($stmt->execute()) {
+        header("Location: mostrarUsuarios.php");
+        exit();
+    } else {
+        echo "Error en la actualización: " . $stmt->error;
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") { // verifica si el method del forms es POST
-        $numero = $_POST["id"];
-        $email = $_POST["email"];
-        $usuario = $_POST["usuario"];
-        $password = $_POST["password"];
+    $stmt->close(); // Cerramos la consulta preparada
+}
 
-        $sql = "UPDATE usuarios SET email = '$email', username = '$usuario', password = '$password' WHERE id = '$numero'";
-        
-        if ($conn->query($sql) === TRUE) {
-            echo "Actualización exitosa";
-        } else {
-            echo "Error en la actualización: " . $conn->error;
-        }
 
-        $conn->close();
-    }
+$numero = $_GET["id"];
+$sql = "SELECT * FROM usuarios WHERE id = '$numero'";
+$result = $conn->query($sql);
+$row = mysqli_fetch_array($result);
+
+$conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Usuario</title>
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
-
 </head>
 <body>
-    <?php
-        include_once("./api/navbar.php")
-    ?>
+    <?php include_once("./api/navbar.php") ?>
     <form action="modificarUsuarios.php" method="POST" id="user_form">
-        <h2> Modificación de Usuario:</h2>
-        <label for="usuario">id de usuario a modificar</label>
-        <input type="text" name="id"><br>
+        <h2>Modificación de Usuario:</h2>
+        <label for="id">ID</label>
+        <input type="hidden" name="id" value="<?= $row['id'] ?>"><br>
+
         <label for="email">email</label>
-        <input type="email" name="email" id="usuario"><br>
+        <input type="email" name="email" id="email"><br>
+
         <label for="usuario">usuario</label>
         <input type="text" name="usuario" id="usuario"><br>
+
         <label for="password">contraseña</label>
         <input type="password" name="password" id="password">
-        <input type="submit" id ="enviar" value="Enviar">
+
+        <input type="submit" id="enviar" value="Modificar">
     </form>
-    <?php
-        include_once("./api/footer.php")
-    ?>
+    <?php include_once("./api/footer.php") ?>
 </body>
 </html>
 

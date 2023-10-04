@@ -12,7 +12,8 @@ $description = $_POST["descripcion"];
 $sql = "INSERT INTO productos (Name, quantity, price, description) VALUES ('$name', '$quantity', '$price','$description')";
 
 if ($conn->query($sql) === TRUE) { 
-    echo "Producto publicado.";
+    header("Location: ../mostrarProductos.php");
+    exit();
 } else {
     echo "Error al registrar: " . $conn->error; 
 }

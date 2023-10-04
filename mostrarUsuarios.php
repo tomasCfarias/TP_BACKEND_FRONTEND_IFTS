@@ -33,7 +33,7 @@
             <th>ID</th>
             <th>EMAIL</th>
             <th>USUARIO</th>
-
+            
         </tr>
    
         <?php
@@ -44,7 +44,8 @@
                 echo "<td>" . $row["id"] . " "."</td>";
                 echo "<td>" . $row["email"] ." ". "</td>";
                 echo "<td>" . $row["username"] . " "."</td>";
-
+                echo "<td><a href='modificarUsuarios.php?id=" . $row['id'] . "'>MODIFICAR</a></td>";
+                echo "<td><a href='borrarUsuarios.php?id=" . $row['id'] . "'>BORRAR</a></td>";
                 echo "</tr>";
             }
         } else {
