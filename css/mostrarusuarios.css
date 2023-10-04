@@ -11,7 +11,14 @@ body {
     background-color: rgb(53, 53, 53);
 }
 
-
+.nuevo-producto {
+    padding: 20px;
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgb(74, 131, 255);
+    margin-top: 10px;
+    margin-left: 10px
+}
 .table-products {
     align-items: center;
     border: 3px solid black;

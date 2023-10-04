@@ -31,17 +31,19 @@
     <?php
         include_once("./api/navbar.php")
     ?>
+    <a class="nuevo-producto" href="subirProducto.php">Nuevo Articulo</a>
     <table class="table-products">
-    <a href="subirProducto.php">Nuevo Articulo</a>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
             <th>Descripción</th>
         </tr>
-   
-<?php
+    </thead>
+    <tbody>
+        <?php
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -53,12 +55,13 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["description"] ." ". "</td>";
         echo "<td><a href='modificarProducto.php?id=" . $row['Id'] . "' id = 'crudM'>MODIFICAR</a></td>";
         echo "<td><a href='borrarProducto.php?id=" . $row['Id'] . "'id='crudBorrar'>BORRAR</a></td>";
-        echo "</tr>"."<br>";
+        echo "</tr>";
     }
 } else {
     echo "NO HAY REGISTROS";
 }
-?>
+?>  
+        </tbody>
     </table>
     <?php
         include_once("./api/footer.php")
