@@ -34,7 +34,7 @@ $stock = $stockInDB - $incart;
     <body>
         <div class="ml-2 lg:ml-8 flex md:flex-row lg: flex-col">
             <img class="border p-8 rounded-t-lg max-h-[600px] w-full max-w-lg" src="<?php 
-                        if($res["img_url"] != 0) {
+                        if($res["img_url"] != "") {
                             echo("img/".$res['img_url']);
                         } else
                         {

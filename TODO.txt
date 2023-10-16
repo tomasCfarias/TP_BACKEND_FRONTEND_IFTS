@@ -1,15 +1,7 @@
 - CSS (Parte admin)
-- Validaciones de entradas en tabla repetidas (Parte admin)
-- Validaciones de campos vacios (Parte admin)
-- Validacion logica de usuarios, mail, contraseña, etc (Parte admin)
 - Proteccion inyeccion sql 
 - Nombrar bien las rutas y traducir todo al mismo idioma
 
 FUNCIONALIDADES 
-- Subir imagenes de productos
-- Tabla de ordenes de compra
-
-DEL TP 
-- Poder crear pdf con la info del crud
-- Excel con información de la base datos
-
+- Tabla de ordenes de compra (Capaz)
+- Arreglar exportar pdf
