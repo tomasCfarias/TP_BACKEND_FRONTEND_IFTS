@@ -82,7 +82,7 @@ if ($result->num_rows > 0) {
 
             doc.html(table, {
                 callback: (doc) => {
-                    doc.save("table.pdf")
+                    doc.save("productos.pdf")
                 }
             })
         }
@@ -91,7 +91,7 @@ if ($result->num_rows > 0) {
             var table = document.getElementsByClassName("table-products")[0]
             console.log(table)
             TableToExcel.convert(table, {
-                name: "products.xlsx",
+                name: "productos.xlsx",
                 sheet: {
                     name: "Sheet 1"
                 }
