@@ -64,12 +64,13 @@ if ($result->num_rows > 0) {
     </table>
     <a class="button" href="subirProducto.php">Nuevo Articulo</a>
     <button class="button" id="pdfout" onclick="generarPDF()">Exportar a pdf</button>
-    <button class="button" id="excelout">Exportar a excel</button>
+    <button class="button" id="excelout" onclick="exportarAExcel()">Exportar a excel</button>
     <?php
         include_once("./api/footer.php")
     ?>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
     <script type="text/javascript">
 
         const generarPDF = () => {
@@ -78,11 +79,21 @@ if ($result->num_rows > 0) {
 
             var doc = new jsPDF("l","px","a4");
             var table = document.getElementsByClassName("table-products")[0]
-            console.log(table)
 
             doc.html(table, {
                 callback: (doc) => {
                     doc.save("table.pdf")
+                }
+            })
+        }
+
+        const exportarAExcel = () => {
+            var table = document.getElementsByClassName("table-products")[0]
+            console.log(table)
+            TableToExcel.convert(table, {
+                name: "products.xlsx",
+                sheet: {
+                    name: "Sheet 1"
                 }
             })
         }
