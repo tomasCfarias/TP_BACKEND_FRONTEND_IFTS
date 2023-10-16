@@ -11,13 +11,17 @@ body {
     background-color: rgb(53, 53, 53);
 }
 
-.nuevo-producto {
-    padding: 20px;
-    position: absolute;
+.button {
+    padding: 5px;
     border-radius: 10px;
     background-color: rgb(74, 131, 255);
     margin-top: 10px;
+    border-style: none;
     margin-left: 10px
+}
+
+#pdfout:hover, #excelout:hover {
+    cursor: pointer;
 }
 .table-products {
     align-items: center;

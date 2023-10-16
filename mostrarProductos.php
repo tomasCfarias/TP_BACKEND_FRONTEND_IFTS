@@ -31,7 +31,6 @@
     <?php
         include_once("./api/navbar.php")
     ?>
-    <a class="nuevo-producto" href="subirProducto.php">Nuevo Articulo</a>
     <table class="table-products">
         <thead>
             <tr>
@@ -63,8 +62,34 @@ if ($result->num_rows > 0) {
 ?>  
         </tbody>
     </table>
+    <a class="button" href="subirProducto.php">Nuevo Articulo</a>
+    <button class="button" id="pdfout" onclick="generarPDF()">Exportar a pdf</button>
+    <button class="button" id="excelout">Exportar a excel</button>
     <?php
         include_once("./api/footer.php")
     ?>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+
+        const generarPDF = () => {
+
+            window.jsPDF = window.jspdf.jsPDF;
+
+            var doc = new jsPDF("l","px","a4");
+            var table = document.getElementsByClassName("table-products")[0]
+            console.log(table)
+
+            doc.html(table, {
+                callback: (doc) => {
+                    doc.save("table.pdf")
+                }
+            })
+        }
+
+
+    
+
+    </script>
 </body>
 </html>
