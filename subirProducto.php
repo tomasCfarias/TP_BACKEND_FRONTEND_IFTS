@@ -18,7 +18,7 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         include_once("./api/navbar.php")
     ?>
 <body>
-    <form action="./api/subirProducto.php" method="POST" id="user_form">
+    <form action="./api/subirProducto.php" method="POST" id="user_form" enctype="multipart/form-data">
         <h2>Publicación</h2>
         <label for="usuario">Nombre</label>
         <input type="text" name="nombre" id="nombre">
@@ -26,6 +26,9 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         <input type="number" name="precio" id="precio">
         <label for="cantidad">Cantidad</label>
         <input type="number" name ="cantidad" id="cantidad">
+        <label for="image">Imagen</label>
+        <input type="file" name="image" />
+
         <label for="descripcion">Descripción</label>
         <textarea  name="descripcion" id="descripcion"></textarea>
     

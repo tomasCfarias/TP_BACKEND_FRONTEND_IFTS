@@ -33,7 +33,15 @@ $stock = $stockInDB - $incart;
     </header>
     <body>
         <div class="ml-2 lg:ml-8 flex md:flex-row lg: flex-col">
-            <img class="border p-8 rounded-t-lg h-auto w-full max-w-lg" src="img/boca.jfif" alt="product image" />
+            <img class="border p-8 rounded-t-lg max-h-[600px] w-full max-w-lg" src="<?php 
+                        if($res["img_url"] != 0) {
+                            echo("img/".$res['img_url']);
+                        } else
+                        {
+                            
+                        echo "img/default.png"; 
+                        }
+                        ?>" alt="product image" />
             
             <?php
             echo("<div class='flex flex-col lg:ml-14 w-full'>");

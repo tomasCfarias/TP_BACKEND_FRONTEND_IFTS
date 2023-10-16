@@ -4,14 +4,15 @@
     $conn = conexion();
     session_start();
     $pagenumber = empty($_GET["page"]) ? 1 : $_GET["page"];
-    $offset = 6 * $pagenumber == 6 ? 0 : 6 * ($pagenumber - 1);
-    $sql = "SELECT * FROM productos LIMIT $offset,6";
+    $cantidad_por_pagina = 8;
+    $offset = $cantidad_por_pagina * $pagenumber == $cantidad_por_pagina ? 0 : $cantidad_por_pagina * ($pagenumber - 1);
+    $sql = "SELECT * FROM productos LIMIT $offset,$cantidad_por_pagina";
     $result = $conn -> query($sql);
 
     $query = "SELECT * FROM productos";  
     $res = mysqli_query($conn, $query);  
     $number_of_result = mysqli_num_rows($res);  
-    $number_of_pages = ceil($number_of_result / 6); 
+    $number_of_pages = ceil($number_of_result / $cantidad_por_pagina); 
 
     $conn ->close();
 ?>
@@ -33,17 +34,25 @@
     <div class="my-2 lg:w-44">
     <div class="hidden lg:block ml-2 lg:ml-3 border border-gray-200 bg-white rounded h-full shadow">Algo..</div>
     </div>
-    <section class="my-2 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+    <section class="my-2 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         <?php
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     ?>
-                    <div class="h-auto w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow">
-                        <img class="p-8 rounded-t-lg" src="img/boca.jfif" alt="product image" />
+                    <div class="h-auto max-h-xs w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow">
+                        <img class="max-h-64 w-full p-8 rounded-t-lg" src="<?php 
+                        if($row["img_url"] != "") {
+                            echo("img/".$row['img_url']);
+                        } else
+                        {
+                            
+                        echo "img/default.png"; 
+                        }
+                        ?>" alt="product image" />
                         <div class="px-5 pb-5">
-                        <h5 class="text-2xl text-center sm:text-left font-bold tracking-tight text-gray-900"><?php echo($row["Name"])?></h5>
-                        <div class="flex items-center justify-between sm:flex-row lg: flex-col">
+                        <h5 class="text-xl text-center sm:text-left font-bold tracking-tight text-gray-900"><?php echo($row["Name"])?></h5>
+                        <div class="flex items-center justify-between flex-col sm:flex-row">
                         <span class="text-xl font-semibold text-gray-900">$<?php echo($row["price"])?></span>
                         <a id="<?php echo($row["Id"])?>" name="product-card" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Ver más</a>
                         </div>
@@ -52,7 +61,7 @@
                     <?php
                 }
             } else {
-                echo "NO HAY REGISTROS";
+                echo "<div>No hay articulos que cumplan con esta busqueda.</div>";
             }
 
         ?>
