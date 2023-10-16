@@ -31,14 +31,22 @@
     <?php
         include_once("./api/navbar.php")
     ?>
+    <div class="main-container">
+    <?php
+        include_once("./api/sidebar.php")
+    ?>
+    <div class="content">
     <table class="table-products">
+        <caption>Productos</caption>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-            <th>Descripción</th>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Accion</th>
+            <th scope="col">Accion</th>
         </tr>
     </thead>
     <tbody>
@@ -47,13 +55,13 @@
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row["Id"] . " "."</td>";
-        echo "<td>" . $row["Name"] ." ". "</td>";
-        echo "<td>" . $row["quantity"] . " "."</td>";
-        echo "<td>" . $row["price"] ." ". "</td>";
-        echo "<td>" . $row["description"] ." ". "</td>";
-        echo "<td><a href='modificarProducto.php?id=" . $row['Id'] . "' id = 'crudM'>MODIFICAR</a></td>";
-        echo "<td><a href='borrarProducto.php?id=" . $row['Id'] . "'id='crudBorrar'>BORRAR</a></td>";
+        echo "<td scope='row' data-label='ID'>" . $row["Id"] . " "."</td>";
+        echo "<td data-label='Nombre'>" . $row["Name"] ." ". "</td>";
+        echo "<td data-label='Cantidad'>" . $row["quantity"] . " "."</td>";
+        echo "<td data-label='Precio'>" . $row["price"] ." ". "</td>";
+        echo "<td data-label='Descripción'>" . $row["description"] ." ". "</td>";
+        echo "<td data-label='Accion'><a href='modificarProducto.php?id=" . $row['Id'] . "' id = 'crudM'>MODIFICAR</a></td>";
+        echo "<td data-label='Accion'><a href='borrarProducto.php?id=" . $row['Id'] . "'id='crudBorrar'>BORRAR</a></td>";
         echo "</tr>";
     }
 } else {
@@ -65,6 +73,8 @@ if ($result->num_rows > 0) {
     <a class="button" href="subirProducto.php">Nuevo Articulo</a>
     <button class="button" id="pdfout" onclick="generarPDF()">Exportar a pdf</button>
     <button class="button" id="excelout" onclick="exportarAExcel()">Exportar a excel</button>
+    </div>
+    </div>
     <?php
         include_once("./api/footer.php")
     ?>

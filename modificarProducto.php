@@ -55,6 +55,9 @@ $conn->close();
     <?php
         include_once("./api/navbar.php")
     ?>
+    <div class="main-container">
+
+<?php include_once("./api/sidebar.php") ?>
         <form action="modificarProducto.php" method="POST" id="user_form">
         <h2>Modificación de Artículo:</h2>
         <label for="id">ID</label>
@@ -70,6 +73,7 @@ $conn->close();
 
         <input id="user_form_btn" type="submit" value="Modificar"/>
     </form>
+    </div>
     <?php
         include_once("./api/footer.php")
     ?>

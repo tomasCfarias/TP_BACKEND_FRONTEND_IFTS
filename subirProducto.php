@@ -17,6 +17,11 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
     <?php
         include_once("./api/navbar.php")
     ?>
+    <div class="main-container">
+
+        <?php
+    include("./api/sidebar.php")    
+    ?>
 <body>
     <form action="./api/subirProducto.php" method="POST" id="user_form" enctype="multipart/form-data">
         <h2>Publicación</h2>
@@ -28,12 +33,13 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         <input type="number" name ="cantidad" id="cantidad" required>
         <label for="image">Imagen</label>
         <input id="imagen" type="file" name="image" />
-
+        
         <label for="descripcion">Descripción</label>
         <textarea name="descripcion" id="descripcion" required></textarea>
-    
+        
         <input id="user_form_btn" type="submit" value="Enviar" />
     </form>
+</div>
     <?php
         include_once("./api/footer.php")
     ?>

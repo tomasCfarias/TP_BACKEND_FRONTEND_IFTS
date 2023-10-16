@@ -53,22 +53,27 @@ $conn->close();
 </head>
 <body>
     <?php include_once("./api/navbar.php") ?>
-    <form action="modificarUsuarios.php" method="POST" id="user_form">
-        <h2>Modificación de Usuario:</h2>
-        <label for="id">ID</label>
-        <input type="hidden" name="id" value="<?= $row['id'] ?>"><br>
+    
+    <div class="main-container">
 
-        <label for="email">email</label>
-        <input type="email" name="email" id="email"><br>
-
-        <label for="usuario">usuario</label>
-        <input type="text" name="usuario" id="usuario"><br>
-
-        <label for="password">contraseña</label>
-        <input type="password" name="password" id="password">
-
-        <input type="submit" id="enviar" value="Modificar">
-    </form>
+        <?php include_once("./api/sidebar.php") ?>
+        <form action="modificarUsuarios.php" method="POST" id="user_form">
+            <h2>Modificación de Usuario:</h2>
+            <label for="id">ID</label>
+            <input type="hidden" name="id" value="<?= $row['id'] ?>"><br>
+            
+            <label for="email">email</label>
+            <input type="email" name="email" id="email"><br>
+            
+            <label for="usuario">usuario</label>
+            <input type="text" name="usuario" id="usuario"><br>
+            
+            <label for="password">contraseña</label>
+            <input type="password" name="password" id="password">
+            
+            <input type="submit" id="enviar" value="Modificar">
+        </form>
+    </div>
     <?php include_once("./api/footer.php") ?>
 </body>
 </html>

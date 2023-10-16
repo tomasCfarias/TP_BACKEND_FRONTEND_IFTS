@@ -28,33 +28,46 @@
     <?php
         include_once("./api/navbar.php")
     ?>
-    <table class="table-products">
-        <tr>
-            <th>ID</th>
-            <th>EMAIL</th>
-            <th>USUARIO</th>
-            
-        </tr>
-   
-        <?php
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["id"] . " "."</td>";
-                echo "<td>" . $row["email"] ." ". "</td>";
-                echo "<td>" . $row["username"] . " "."</td>";
-                echo "<td><a href='modificarUsuarios.php?id=" . $row['id'] . "'>MODIFICAR</a></td>";
-                echo "<td><a href='borrarUsuarios.php?id=" . $row['id'] . "'>BORRAR</a></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "NO HAY REGISTROS";
-        }
-        ?>
+    <div class="main-container">
+    <?php
+    include("./api/sidebar.php")    
+    ?>
+    <div class="content">
+    <table class="table-products">
+        <caption>Usuarios</caption>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Usuario</th>
+            <th scope="col">Accion</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td data-label='ID'>" . $row["id"] . " "."</td>";
+        echo "<td data-label='Email'>" . $row["email"] ." ". "</td>";
+        echo "<td data-label='Usuario'>" . $row["username"] . " "."</td>";
+        echo "<td data-label='Accion'><a href='modificarUsuarios.php?id=" . $row['id'] . "'>MODIFICAR</a></td>";
+        echo "<td data-label='Accion'><a href='borrarUsuarios.php?id=" . $row['id'] . "'>BORRAR</a></td>";
+        echo "</tr>";
+    }
+} else {
+    echo "NO HAY REGISTROS";
+}
+?>
+        </tbody>
     </table>
     <button class="button" id="pdfout" onclick="generarPDF()">Exportar a pdf</button>
     <button class="button" id="excelout" onclick="exportarAExcel()">Exportar a excel</button>
+    </div>
+    </div>
     <?php
         include_once("./api/footer.php")
     ?>

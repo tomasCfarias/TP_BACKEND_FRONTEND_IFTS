@@ -32,3 +32,9 @@ button:hover {
     cursor: pointer;
     scale: 1.02;
 }
+
+
+.main-container {
+    display: flex;
+    height: 85vh;
+}

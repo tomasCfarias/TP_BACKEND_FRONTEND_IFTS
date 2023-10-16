@@ -20,15 +20,20 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
 
 <body>
     <?php
-        include_once("./api/navbar.php")
+        include_once("./api/navbar.php");
     ?>
-    <section class="main">
-        <h1>Bienvenido</h1>
-        <a href="articulos.php"><h1>Ir a la tienda</h1></a>
-    </section>
+    <div class="main-container">
     <?php
-        include_once("./api/footer.php")
+        include_once("./api/sidebar.php")
     ?>
+        <section class="main">
+            <h1>Bienvenido</h1>
+            <a href="articulos.php"><h1>Ir a la tienda</h1></a>
+        </section>
+        </div>
+        <?php
+        include_once("./api/footer.php")
+        ?>
 </body>
 
 </html>
