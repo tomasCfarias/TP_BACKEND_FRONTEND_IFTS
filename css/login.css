@@ -44,5 +44,5 @@ button:hover {
 
 .main-container {
     display: flex;
-    height: 85vh;
+    height: calc(100vh - 48px);
 }

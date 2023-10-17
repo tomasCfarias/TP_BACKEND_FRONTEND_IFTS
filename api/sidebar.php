@@ -5,13 +5,14 @@
         <li><a href="subirProducto.php">Nuevo Producto</a></li>
         <li><a href="#">Ventas</a></li>
         <li><a href="#">Estadisticas</a></li>
+        <li class="tiendabtn"><a href="articulos.php"><h3>Ir a la tienda</h3></a></li>
     </ul>
 
 
 <style>
     .sidebar {
         background-color: whitesmoke;
-        height: 100vh;
+        height: 100%;
         width: 200px;
         transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
     }
@@ -41,5 +42,9 @@
     cursor: pointer;
 
    }
-  
+   @media screen and (max-width: 600px) {
+    .sidebar {
+      width: 0;
+    }
+    }
 </style>

@@ -28,12 +28,8 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
     ?>
         <section class="main">
             <h1>Bienvenido</h1>
-            <a href="articulos.php"><h1>Ir a la tienda</h1></a>
         </section>
-        </div>
-        <?php
-        include_once("./api/footer.php")
-        ?>
+        </div>     
 </body>
 <script src="navbar.js"></script>
 </html>

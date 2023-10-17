@@ -4,14 +4,12 @@ ul {
 }
 
 body {
-    height: 100%;
     position: relative;
-    min-height: 100vh;
     }
 
 .main-container {
     display: flex;
-    height: 85vh;
+    height: calc(100vh - 48px);
 }
 
 .main {
