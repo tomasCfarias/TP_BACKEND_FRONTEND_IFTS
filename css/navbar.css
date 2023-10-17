@@ -9,6 +9,7 @@ a {
     color: rgb(0, 0, 0);
 }
 .navbar {
+    z-index : 4;
     display: flex;
     justify-content: space-between;
     background-color: rgb(236, 236, 236);
@@ -61,4 +62,12 @@ ul,li{
 }
 .usuarios:hover .users , .productos:hover .products {
     display : block
+}
+
+
+
+.openbtn {
+    border: none;
+    background-color: inherit;
+
 }

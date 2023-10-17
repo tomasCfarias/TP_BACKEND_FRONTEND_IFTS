@@ -4,6 +4,8 @@
 }
 .main-container {
     display: flex;
+    height: 85vh;
+
 }
 
 

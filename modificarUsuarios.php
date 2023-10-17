@@ -74,7 +74,9 @@ $conn->close();
             <input type="submit" id="enviar" value="Modificar">
         </form>
     </div>
-    <?php include_once("./api/footer.php") ?>
+
+    <script src="navbar.js"></script>
+
 </body>
 </html>
 

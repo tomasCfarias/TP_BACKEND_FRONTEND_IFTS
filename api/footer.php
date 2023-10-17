@@ -5,14 +5,13 @@
 
 <style>
 footer {
-    position: sticky;
-    bottom: 0;         	
+    position: absolute;
+    bottom: 0;
     background-color: black;
     color: white;
     width: 100%;
     height: 2rem;
-    display:flex;
-    align-items: center;
+    z-index: 4;
 }
 
 

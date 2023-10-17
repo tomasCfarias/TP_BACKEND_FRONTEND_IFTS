@@ -1,6 +1,7 @@
 - CSS (Parte admin)
 - Proteccion inyeccion sql 
 - Nombrar bien las rutas y traducir todo al mismo idioma
+- Arreglar footer o sacarlo (Parte admin)
 
 FUNCIONALIDADES 
 - Tabla de ordenes de compra (Capaz)

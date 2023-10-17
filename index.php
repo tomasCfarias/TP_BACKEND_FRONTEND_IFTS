@@ -35,6 +35,6 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         include_once("./api/footer.php")
         ?>
 </body>
-
+<script src="navbar.js"></script>
 </html>
 

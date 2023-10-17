@@ -40,8 +40,7 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         <input id="user_form_btn" type="submit" value="Enviar" />
     </form>
 </div>
-    <?php
-        include_once("./api/footer.php")
-    ?>
+    <script src="navbar.js"></script>
+
 </body>
 </html>

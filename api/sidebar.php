@@ -1,31 +1,45 @@
-<div class="side-container">
     <ul class="sidebar">
+        <li><button class="closebtn">X</button></li>
         <li><a href="mostrarUsuarios.php">Usuarios</a></li>
         <li><a href="mostrarProductos.php">Productos</a></li>
         <li><a href="subirProducto.php">Nuevo Producto</a></li>
         <li><a href="#">Ventas</a></li>
         <li><a href="#">Estadisticas</a></li>
     </ul>
-</div>
 
 
 <style>
-    .side-container {
-        width: 10rem;
-    }
-
     .sidebar {
         background-color: whitesmoke;
-        height: 100%;
-        padding: 1rem;
+        height: 100vh;
+        width: 200px;
+        transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
     }
-    .sidebar>li {
-    margin-top: 1rem;
-    }
-    .sidebar>li:hover {
-scale: 1.05; 
-   }
 
+    .sidebar>li {
+    padding-left: 15px;
+    margin-top: 1rem;
+    overflow: hidden;
+    }
+    .sidebar>li>button {
+    padding-left: 15px;
+    margin-top: 0;
+    overflow: hidden;
+    }
+
+    .sidebar>li:hover {
+    scale: 1.05; 
+    }
     
+   .closebtn {
+        border: none;
+        margin-left: 120px;
+        background-color: inherit;
+
+   }
+   .closebtn:hover {
+    cursor: pointer;
+
+   }
   
 </style>
