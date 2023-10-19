@@ -4,7 +4,13 @@
     session_start();
     if(!isset($_SESSION['login_user_tienda'])){ //if login in session is not set
       header("Location: login-tienda.php");
-      }  
+      }
+      
+      
+    if ($_GET["user"] != $_SESSION["userid_tienda"])  {
+      header("Location: articulos.php");
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

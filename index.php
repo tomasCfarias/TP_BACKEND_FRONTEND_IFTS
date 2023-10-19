@@ -27,9 +27,9 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         include_once("./api/sidebar.php")
     ?>
         <section class="main">
+            </section>
+            <section class="tabla-usuarios">
             <h1>Bienvenido</h1>
-        </section>
-        <section class="tabla-usuarios">
             <?php include("mostrarUsuarios.php") ?>
         </section>
         </div>     
