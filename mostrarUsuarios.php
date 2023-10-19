@@ -1,7 +1,6 @@
 <?php
     include("./api/connection.php");
 
-    session_start();
     if(!isset($_SESSION['login_user'])){ //if login in session is not set
     header("Location: login.php");
     }
@@ -25,14 +24,14 @@
 <link rel="stylesheet" href="./css/mostrarusuarios.css">
 <link rel="stylesheet" href="./css/navbar.css">
 <body>
-    <?php
+    <!-- <?php
         include_once("./api/navbar.php")
-    ?>
+    ?> -->
 
     <div class="main-container">
-    <?php
+    <!-- <?php
     include("./api/sidebar.php")    
-    ?>
+    ?> -->
     <div class="content">
     <table class="table-products">
         <caption>Usuarios</caption>
@@ -54,8 +53,8 @@ if ($result->num_rows > 0) {
         echo "<td data-label='ID'>" . $row["id"] . " "."</td>";
         echo "<td data-label='Email'>" . $row["email"] ." ". "</td>";
         echo "<td data-label='Usuario'>" . $row["username"] . " "."</td>";
-        echo "<td data-label='Accion'><a href='modificarUsuarios.php?id=" . $row['id'] . "'>MODIFICAR</a></td>";
-        echo "<td data-label='Accion'><a href='borrarUsuarios.php?id=" . $row['id'] . "'>BORRAR</a></td>";
+        echo "<td data-label='Accion'><a href='modificarUsuarios.php?id=" . $row['id'] . "'id='crudM'>MODIFICAR</a></td>";
+        echo "<td data-label='Accion'><a href='borrarUsuarios.php?id=" . $row['id'] . "'id='crudBorrar'>BORRAR</a></td>";
         echo "</tr>";
     }
 } else {

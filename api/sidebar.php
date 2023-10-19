@@ -1,6 +1,5 @@
     <ul class="sidebar">
         <li><button class="closebtn">X</button></li>
-        <li><a href="mostrarUsuarios.php">Usuarios</a></li>
         <li><a href="mostrarProductos.php">Productos</a></li>
         <li><a href="subirProducto.php">Nuevo Producto</a></li>
         <li><a href="#">Ventas</a></li>

@@ -29,6 +29,9 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         <section class="main">
             <h1>Bienvenido</h1>
         </section>
+        <section class="tabla-usuarios">
+            <?php include("mostrarUsuarios.php") ?>
+        </section>
         </div>     
 </body>
 <script src="navbar.js"></script>
