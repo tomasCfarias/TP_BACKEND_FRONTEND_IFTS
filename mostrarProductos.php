@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
         </tbody>
     </table>
     <a class="button" href="subirProducto.php">Nuevo Articulo</a>
-    <button class="button" id="pdfout" onclick="generarPDF()">Exportar a pdf</button>
+    <button class="button" id="pdfout"><a href="pdfoutput.php?type=products">Exportar a pdf</a></button>
     <button class="button" id="excelout" onclick="exportarAExcel()">Exportar a excel</button>
     </div>
     </div>

@@ -23,6 +23,8 @@ $result = $conn -> query($sql);
     <title>Ventas</title>
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/mostrarusuarios.css">
+    <link rel="stylesheet" href="css/index.css">
+
 
 </head>
 <body>
@@ -66,5 +68,7 @@ if ($result->num_rows > 0) {
             </table>
         </div>
     </div>
+    <script src="navbar.js"></script>
+
 </body>
 </html>

@@ -11,6 +11,7 @@
     $result = $conn -> query($sql);
 
     $conn ->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -63,31 +64,14 @@ if ($result->num_rows > 0) {
 ?>
         </tbody>
     </table>
-    <button class="button" id="pdfout" onclick="generarPDF()">Exportar a pdf</button>
+    <button class="button" id="pdfout"><a href="pdfoutput.php?type=user">Exportar a pdf</a></button>
     <button class="button" id="excelout" onclick="exportarAExcel()">Exportar a excel</button>
     </div>
     </div>
     
     <script src="navbar.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
     <script type="text/javascript">
-
-        const generarPDF = () => {
-
-            window.jsPDF = window.jspdf.jsPDF;
-
-            var doc = new jsPDF("l","px","a4");
-            var table = document.getElementsByClassName("table-products")[0]
-
-            doc.html(table, {
-                callback: (doc) => {
-                    doc.save("usuarios.pdf")
-                }
-            })
-        }
-
         const exportarAExcel = () => {
             var table = document.getElementsByClassName("table-products")[0]
             console.log(table)
@@ -98,10 +82,6 @@ if ($result->num_rows > 0) {
                 }
             })
         }
-
-
-    
-
     </script>
 </body>
 </html>
