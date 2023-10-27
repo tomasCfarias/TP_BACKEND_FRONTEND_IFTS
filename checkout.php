@@ -45,26 +45,36 @@
         //Crea conexion y crea entrada en la tabla de ventas
         $conn = conexion();
         $id = $_SESSION['userid_tienda'];
-        $sql = "INSERT INTO ventas (IdCliente) VALUES ('$id')";
+        $sql = "INSERT INTO ventas (idCliente) VALUES ('$id')";
 
         //Selecciona el ID de la ultima venta creada para usarlo en el detalle de ventas
         $result = $conn -> query($sql);
-        $sql = "SELECT IdVenta FROM ventas ORDER BY IdVenta DESC";
+        $sql = "SELECT idVenta FROM ventas ORDER BY idVenta DESC";
         $result = $conn -> query($sql);
         $id_venta = mysqli_fetch_column($result);
 
+        $total_price = 0;
         foreach($_SESSION["cart_list"] as $val) {
-          
+
+          //Calcula precio total de la compra
+          $price = $val[2] * $val[3];
+          $total_price+= $price;
+
           //Inserta cada uno de los productos en la tabla detalleventas
           $id_producto = $val[0];
           $cantidad = $val[2];
-          $sql = "INSERT INTO detalleventas (IdVenta,IdProducto,Cantidad) VALUES ('$id_venta','$id_producto','$cantidad')";
+          $sql = "INSERT INTO detalleventas (idVenta,idProducto,cantidad) VALUES ('$id_venta','$id_producto','$cantidad')";
           $result = $conn -> query($sql);
 
           //Disminuye el stock de cada uno de los productos
           $sql = "UPDATE productos SET quantity = quantity - '$cantidad' WHERE Id = $id_producto";
           $result = $conn -> query($sql);
+
         }
+          //Agrega el precio total a la tabla ventas
+          $sql = "UPDATE ventas SET preciototal = $total_price WHERE idVenta = $id_venta";
+          $result = $conn -> query($sql);
+
 
 
         //Vacía el carrito de compra

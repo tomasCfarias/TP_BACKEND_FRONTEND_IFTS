@@ -2,7 +2,7 @@
         <li><button class="closebtn">X</button></li>
         <li><a href="mostrarProductos.php">Productos</a></li>
         <li><a href="subirProducto.php">Nuevo Producto</a></li>
-        <li><a href="#">Ventas</a></li>
+        <li><a href="ventas.php">Ventas</a></li>
         <li><a href="#">Estadisticas</a></li>
         <li class="tiendabtn"><a href="articulos.php"><h3>Ir a la tienda</h3></a></li>
     </ul>
