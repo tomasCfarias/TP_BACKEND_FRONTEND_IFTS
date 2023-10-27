@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include("api/connection.php");
     if(!isset($_SESSION['login_user_tienda'])){ //if login in session is not set
       header("Location: login-tienda.php");
       }  
@@ -40,6 +41,33 @@
         </div>  
         
         <?php
+
+        //Crea conexion y crea entrada en la tabla de ventas
+        $conn = conexion();
+        $id = $_SESSION['userid_tienda'];
+        $sql = "INSERT INTO ventas (IdCliente) VALUES ('$id')";
+
+        //Selecciona el ID de la ultima venta creada para usarlo en el detalle de ventas
+        $result = $conn -> query($sql);
+        $sql = "SELECT IdVenta FROM ventas ORDER BY IdVenta DESC";
+        $result = $conn -> query($sql);
+        $id_venta = mysqli_fetch_column($result);
+
+        foreach($_SESSION["cart_list"] as $val) {
+          
+          //Inserta cada uno de los productos en la tabla detalleventas
+          $id_producto = $val[0];
+          $cantidad = $val[2];
+          $sql = "INSERT INTO detalleventas (IdVenta,IdProducto,Cantidad) VALUES ('$id_venta','$id_producto','$cantidad')";
+          $result = $conn -> query($sql);
+
+          //Disminuye el stock de cada uno de los productos
+          $sql = "UPDATE productos SET quantity = quantity - '$cantidad' WHERE Id = $id_producto";
+          $result = $conn -> query($sql);
+        }
+
+
+        //Vacía el carrito de compra
         $_SESSION["cart_list"] = [];
       }
     }

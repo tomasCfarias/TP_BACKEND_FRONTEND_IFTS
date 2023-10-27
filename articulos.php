@@ -32,7 +32,32 @@
     ?>
     <div class="flex">
     <div class="my-2 lg:w-44">
-    <div class="hidden lg:block ml-2 lg:ml-3 border border-gray-200 bg-white rounded h-full shadow">Algo..</div>
+    <div class="hidden lg:block ml-2 lg:ml-3 p-3 border border-gray-200 bg-white rounded h-full shadow">
+        <b>Filtros</b>
+
+            <form action="" method="get" class="mb-16">
+                <ul>
+                <li><input type="checkbox" class="mr-1">Todo</li>
+                <li><input type="checkbox" class="mr-1">Remeras</li>
+                <li><input type="checkbox" class="mr-1">Pantalones</li>
+                <li><input type="checkbox" class="mr-1">Camperas</li>
+                <label for="precio">Precio maximo</label>
+                <li><input name="Precio" type="range" min="1" max="10000" value="50"></li>
+                <input type="button" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Filtrar">
+                </ul>
+            </form>
+
+        <b>Ordenar por</b>
+            <form action="" method="get">
+                <ul>
+                <li><input type="checkbox" class="mr-1">Precio (Menor a mayor)</li>
+                <li><input type="checkbox" class="mr-1">Precio (Mayor a menor)</li>
+                <li><input type="checkbox" class="mr-1">Mas vendidos</li>
+                <input type="button" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Ordenar">
+                </ul>
+            </form>
+
+    </div>
     </div>
     <section class="my-2 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         <?php
@@ -40,7 +65,7 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     ?>
-                    <div class="h-auto max-h-xs w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow">
+                    <div class="h-fit w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow">
                         <img class="max-h-64 w-full p-8 rounded-t-lg" src="<?php 
                         if($row["img_url"] != "") {
                             echo("img/".$row['img_url']);
