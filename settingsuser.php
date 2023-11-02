@@ -35,7 +35,7 @@
     <form class="space-y-6" action="settingsuser.php?user=<?=$_SESSION['userid_tienda']?>" method="POST"> 
 
     <?php
-
+    
     //Check email format
     if($_SERVER["REQUEST_METHOD"] == "POST") {
     $myemail = $_POST['email'];
@@ -44,13 +44,24 @@
     $hash = password_hash($newpassword, PASSWORD_DEFAULT );
     $myusername = $_POST["usuario"];
     $id = $_SESSION["userid_tienda"];
-
+    
     $sql = "SELECT password FROM usuarios WHERE id = '$id'";
     $result = $conn -> query($sql);
     $row = mysqli_fetch_array($result);
          
-    
-    if (!filter_var($myemail, FILTER_VALIDATE_EMAIL) || preg_match("/[^a-zA-Z0-9]+/",$myusername)) {
+    //Check if email already in db
+    $sql = "SELECT * from usuarios WHERE email= '$myemail'";
+    $result = $conn -> query($sql);
+    $row2 = mysqli_fetch_array($result);
+    if (is_array($row2)) {
+            ?>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline">El email ya esta registrado.</span>
+          </div>  
+          <?php
+        }
+    elseif (!filter_var($myemail, FILTER_VALIDATE_EMAIL) || preg_match("/[^a-zA-Z0-9]+/",$myusername)) {
 
         ?>
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -66,8 +77,8 @@
           <span class="block sm:inline">Tu contraseña actual es incorrecta.</span>
         </div>
        <?php
+
     }
-    
     else {
 
         $sql = "UPDATE usuarios SET email = '$myemail', username = '$myusername', password = '$hash' WHERE id = '$id'";
@@ -83,6 +94,7 @@
         } 
         $conn->close();
     }
+
  }
   ?>    
 
