@@ -60,7 +60,6 @@ $conn->close();
 <?php include_once("./api/sidebar.php") ?>
         <form action="modificarProducto.php" method="POST" id="user_form">
         <h2>Modificación de Artículo:</h2>
-        <label for="id">ID</label>
         <input type="hidden" name="id" value="<?= $row['Id'] ?>">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre" value="<?= $row['Name'] ?>">

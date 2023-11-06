@@ -18,7 +18,7 @@
                 $stmt->bind_param("i", $numero);
             }
             if ($stmt->execute()) {
-                header("Location: mostrarUsuarios.php");
+                header("Location: index.php");
                 exit();
             } else {
                 echo "Error al borrar el registro: " . $stmt->error;

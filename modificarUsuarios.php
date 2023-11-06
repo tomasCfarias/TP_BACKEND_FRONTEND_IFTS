@@ -12,7 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $numero = $_POST["id"];
     $email = $_POST["email"];
     $usuario = $_POST["usuario"];
+    
     $password = $_POST["password"];
+    $hash = password_hash($password, PASSWORD_DEFAULT );
 
     // Modificamos la consulta para usar una consulta preparada
     $sql = "UPDATE usuarios SET email = ?, username = ?, password = ? WHERE id = ?";
@@ -21,11 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
 
     // Vinculamos los valores a la consulta
-    $stmt->bind_param("sssi", $email, $usuario, $password, $numero);
+    $stmt->bind_param("sssi", $email, $usuario, $hash, $numero);
 
     // Ejecutamos la consulta
     if ($stmt->execute()) {
-        header("Location: mostrarUsuarios.php");
+        header("Location: index.php");
         exit();
     } else {
         echo "Error en la actualización: " . $stmt->error;
@@ -59,14 +61,13 @@ $conn->close();
         <?php include_once("./api/sidebar.php") ?>
         <form action="modificarUsuarios.php" method="POST" id="user_form">
             <h2>Modificación de Usuario:</h2>
-            <label for="id">ID</label>
             <input type="hidden" name="id" value="<?= $row['id'] ?>"><br>
             
             <label for="email">email</label>
-            <input type="email" name="email" id="email"><br>
+            <input type="email" name="email" id="email" value="<?= $row['email'] ?>"><br>
             
             <label for="usuario">usuario</label>
-            <input type="text" name="usuario" id="usuario"><br>
+            <input type="text" name="usuario" id="usuario" value="<?= $row['username'] ?>"><br>
             
             <label for="password">contraseña</label>
             <input type="password" name="password" id="password">

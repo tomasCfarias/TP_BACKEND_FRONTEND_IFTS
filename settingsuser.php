@@ -53,7 +53,7 @@
     $sql = "SELECT * from usuarios WHERE email= '$myemail'";
     $result = $conn -> query($sql);
     $row2 = mysqli_fetch_array($result);
-    if (is_array($row2)) {
+    if (is_array($row2) && $row2["id"] != $id) {
             ?>
           <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">Error!</strong>

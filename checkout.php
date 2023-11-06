@@ -10,38 +10,10 @@
       if(isset($_POST["id"])) {
         $id = $_POST["id"];
         unset($_SESSION["cart_list"]["$id"]);
-      }
-    } 
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
+      } 
 
 
-</head>
-<body>
-    <div class="min-h-screen">
-    <?php 
-    include_once("api/navbartiendatailwind.php");
-    ?>
-    <div class="ml-8 mr-8 border rounded">
-     
-    <?php
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
       if(!isset($_POST["id"])) {
-        ?> 
-        <div class=" bg-green-100 border border-green-400 text-green-700 mx-4 my-2 px-4 py-3 rounded relative" role="alert">
-            <strong class="font-bold">Listo!</strong>
-            <span class="block sm:inline">Gracias por tu compra.</span>
-        </div>  
-        
-        <?php
-
         //Crea conexion y crea entrada en la tabla de ventas
         $conn = conexion();
         $id = $_SESSION['userid_tienda'];
@@ -82,6 +54,34 @@
       }
     }
 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="min-h-screen">
+    <?php 
+    include_once("api/navbartiendatailwind.php");
+    ?>
+    <div class="ml-8 mr-8 border rounded">
+     
+    <?php
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+      if(!isset($_POST["id"])) {
+
+      echo '<div class=" bg-green-100 border border-green-400 text-green-700 mx-4 my-2 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Listo!</strong>
+            <span class="block sm:inline">Gracias por tu compra.</span>
+        </div>';
+      }
+    }
     if(empty($_SESSION["cart_list"])) {
         echo("<p class='p-5 font-medium'>No hay elementos en el carrito..</p>");
       }
