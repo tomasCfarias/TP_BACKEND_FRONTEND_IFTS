@@ -72,9 +72,9 @@ if ($result->num_rows > 0) {
     <script src="navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
     <script type="text/javascript">
+        
         const exportarAExcel = () => {
             var table = document.getElementsByClassName("table-products")[0]
-            console.log(table)
             TableToExcel.convert(table, {
                 name: "usuarios.xlsx",
                 sheet: {

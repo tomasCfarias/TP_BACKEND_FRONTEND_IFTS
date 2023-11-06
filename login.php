@@ -63,8 +63,5 @@
         <input type="password" name="password" id="password">
         <input type="submit" id ="enviar" value="Enviar">
     </form>
-    <?php
-        include_once("./api/footer.php")
-    ?>
 </body>
 </html>

@@ -82,23 +82,8 @@ if ($result->num_rows > 0) {
     <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
     <script type="text/javascript">
 
-        const generarPDF = () => {
-
-            window.jsPDF = window.jspdf.jsPDF;
-
-            var doc = new jsPDF("l","px","a4");
-            var table = document.getElementsByClassName("table-products")[0]
-
-            doc.html(table, {
-                callback: (doc) => {
-                    doc.save("productos.pdf")
-                }
-            })
-        }
-
         const exportarAExcel = () => {
             var table = document.getElementsByClassName("table-products")[0]
-            console.log(table)
             TableToExcel.convert(table, {
                 name: "productos.xlsx",
                 sheet: {
