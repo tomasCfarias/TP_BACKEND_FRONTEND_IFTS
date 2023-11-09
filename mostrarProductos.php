@@ -45,6 +45,7 @@
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
             <th scope="col">Descripción</th>
+            <th scope="col">Estado</th>
             <th scope="col">Accion</th>
             <th scope="col">Accion</th>
         </tr>
@@ -54,14 +55,28 @@
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+
+        if ($row["estado"] == 0) {
+            $estado = "Activo";
+        } else { 
+            $estado = "Inactivo";
+        }
+
         echo "<tr>";
         echo "<td scope='row' data-label='ID'>" . $row["Id"] . " "."</td>";
         echo "<td data-label='Nombre'>" . $row["Name"] ." ". "</td>";
         echo "<td data-label='Cantidad'>" . $row["quantity"] . " "."</td>";
         echo "<td data-label='Precio'>" . $row["price"] ." ". "</td>";
         echo "<td data-label='Descripción'>" . $row["description"] ." ". "</td>";
+        echo "<td data-label='Estado'>" . $estado ."</td>";
         echo "<td data-label='Accion'><a href='modificarProducto.php?id=" . $row['Id'] . "' id = 'crudM'>MODIFICAR</a></td>";
-        echo "<td data-label='Accion'><a href='borrarProducto.php?id=" . $row['Id'] . "'id='crudBorrar'>BORRAR</a></td>";
+
+        if ($estado == "Activo") {
+            echo "<td data-label='Accion'><a href='borrarProducto.php?estado=1&id=" . $row['Id'] . "'id='crudBorrar'>Pausar</a></td>";
+        } 
+        else if ($estado == "Inactivo") {
+            echo "<td data-label='Accion'><a href='borrarProducto.php?estado=0&id=" . $row['Id'] . "'id='crudActivar'>Activar</a></td>";
+        } 
         echo "</tr>";
     }
 } else {

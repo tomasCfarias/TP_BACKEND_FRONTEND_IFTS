@@ -6,10 +6,10 @@
     $pagenumber = empty($_GET["page"]) ? 1 : $_GET["page"];
     $cantidad_por_pagina = 8;
     $offset = $cantidad_por_pagina * $pagenumber == $cantidad_por_pagina ? 0 : $cantidad_por_pagina * ($pagenumber - 1);
-    $sql = "SELECT * FROM productos LIMIT $offset,$cantidad_por_pagina";
+    $sql = "SELECT * FROM productos WHERE estado = 0 LIMIT $offset,$cantidad_por_pagina";
     $result = $conn -> query($sql);
 
-    $query = "SELECT * FROM productos";  
+    $query = "SELECT * FROM productos WHERE estado = 0";  
     $res = mysqli_query($conn, $query);  
     $number_of_result = mysqli_num_rows($res);  
     $number_of_pages = ceil($number_of_result / $cantidad_por_pagina); 

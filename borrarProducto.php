@@ -9,8 +9,8 @@
 
         if(isset($_GET["id"])) {
             $numero = $_GET["id"];
-
-            $sql = "DELETE FROM productos WHERE id = ?";
+            $estado = intval($_GET["estado"]);
+            $sql = "UPDATE productos SET estado = $estado WHERE id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $numero);
 
