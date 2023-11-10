@@ -64,9 +64,9 @@ $conn->close();
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre" value="<?= $row['Name'] ?>">
         <label for="precio">Precio</label>
-        <input type="number" name="precio" id="precio" value="<?= $row['price'] ?>">
+        <input type="number" name="precio" min="1" id="precio" value="<?= $row['price'] ?>">
         <label for="cantidad">Cantidad</label>
-        <input type="number" name="cantidad" id="cantidad" value="<?= $row['quantity'] ?>">
+        <input type="number" min="0" name="cantidad" id="cantidad" value="<?= $row['quantity'] ?>">
         <label for="descripcion">Descripción</label>
         <textarea name="descripcion" id="descripcion"><?= $row['description'] ?></textarea>
 
