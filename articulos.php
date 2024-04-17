@@ -3,16 +3,33 @@
 
     $conn = conexion();
     session_start();
+
+    
     $pagenumber = empty($_GET["page"]) ? 1 : $_GET["page"];
     $cantidad_por_pagina = 8;
     $offset = $cantidad_por_pagina * $pagenumber == $cantidad_por_pagina ? 0 : $cantidad_por_pagina * ($pagenumber - 1);
-    $sql = "SELECT * FROM productos WHERE estado = 0 LIMIT $offset,$cantidad_por_pagina";
-    $result = $conn -> query($sql);
+    if (empty($_GET["q"])) {
+        $sql = "SELECT * FROM productos WHERE estado = 0 LIMIT $offset,$cantidad_por_pagina";
+        if (isset($_GET["categoria"])) {
+            $categoria = $_GET["categoria"];
+            $sql = "SELECT * FROM productos WHERE estado = 0 AND Categoría = '$categoria' LIMIT $offset,$cantidad_por_pagina";
 
-    $query = "SELECT * FROM productos WHERE estado = 0";  
-    $res = mysqli_query($conn, $query);  
-    $number_of_result = mysqli_num_rows($res);  
-    $number_of_pages = ceil($number_of_result / $cantidad_por_pagina); 
+        };
+    }
+    else {
+        $param = $_GET["q"];
+        $sql = "SELECT * FROM productos WHERE estado = 0 AND Name LIKE '%$param%' LIMIT $offset,$cantidad_por_pagina";
+        if (isset($_GET["categoria"])) {
+            $categoria = $_GET["categoria"];
+            $sql = "SELECT * FROM productos WHERE estado = 0 AND Name LIKE '%$param%' AND Categoría = '$categoria' LIMIT $offset,$cantidad_por_pagina";
+        }
+    }
+        $result = $conn -> query($sql);
+
+        $query = "SELECT * FROM productos WHERE estado = 0";  
+        $res = mysqli_query($conn, $query);  
+        $number_of_result = mysqli_num_rows($res);  
+        $number_of_pages = ceil($number_of_result / $cantidad_por_pagina); 
 
     $conn ->close();
 ?>
@@ -34,19 +51,22 @@
     <div class="my-2 lg:w-44">
     <div class="hidden lg:block ml-2 lg:ml-3 p-3 border border-gray-200 bg-white rounded h-full shadow">
         <b>Filtros</b>
-
-            <form action="" method="get" class="mb-16">
+            <form id = "filter_form">
                 <ul>
-                <li><input type="checkbox" class="mr-1">Todo</li>
-                <li><input type="checkbox" class="mr-1">Remeras</li>
-                <li><input type="checkbox" class="mr-1">Pantalones</li>
-                <li><input type="checkbox" class="mr-1">Camperas</li>
-                <label for="precio">Precio maximo</label>
-                <li><input name="Precio" type="range" min="1" max="10000" value="50"></li>
-                <input type="button" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Filtrar">
+                    <li><input type="checkbox" class="mr-1" name="categoria" value="1">Remeras</li>
+                    <li><input type="checkbox" class="mr-1" name="categoria" value="2">Pantalones</li>
+                    <li><input type="checkbox" class="mr-1" name="categoria" value="3">Camperas</li>
+                    <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Filtrar">Filtrar</button>
                 </ul>
             </form>
-
+        
+        <!--    
+            <label for="precio">Precio maximo</label>
+                <li><input name="Precio" type="range" min="1" max="10000" value="50"></li>
+                <button type="submit" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Filtrar">Filtrar</button>
+                </ul>
+            </form>
+        
         <b>Ordenar por</b>
             <form action="" method="get">
                 <ul>
@@ -56,7 +76,7 @@
                 <input type="button" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Ordenar">
                 </ul>
             </form>
-
+        -->
     </div>
     </div>
     <section class="my-2 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
@@ -86,7 +106,7 @@
                     <?php
                 }
             } else {
-                echo "<div>No hay articulos que cumplan con esta busqueda.</div>";
+                echo "<div>No hay articulos que cumplan con esta busqueda. </div>";
             }
 
         ?>

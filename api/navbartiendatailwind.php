@@ -32,9 +32,16 @@
 
 <nav class="bg-white border-gray-200">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="articulos.php" class="flex items-center">
+    <div class="leftnav sm:flex">
+      <a href="articulos.php" class="flex items-center mr-10">
         <span class="self-center text-2xl font-semibold whitespace-nowrap ">Tienda</span>
-    </a>
+      </a>
+      <form action="articulos.php" method="GET" id="search_form">
+      <input type="search" placeholder="Busca tu producto" class="rounded-lg" id="q" name="q">
+      <button type="submit" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buscar</button>
+    </form>
+    </div>
+    
     <div class="block w-auto" id="navbar-dropdown">
       <ul class="flex font-medium p-0 border border-gray-100 rounded-lg flex-row sm:space-x-8 mt-0 border-0 bg-white">
         <li>

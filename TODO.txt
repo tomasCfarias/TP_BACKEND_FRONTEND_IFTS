@@ -1,3 +1,0 @@
-FUNCIONALIDADES 
-- Cambiar la eliminacion de los productos a hacerlos inactivos
-- Modificar usuario tiene que verificar que el email no exista en la base de datos (parte admin)
