@@ -15,7 +15,15 @@ formButton.addEventListener("click", (e) => {
     const form = Array.from(document.getElementsByName("categoria")).filter( cat => cat.checked)
     const categorias = form.map(e => e.defaultValue)
     const url = window.location.href
-    const newUrl = url.includes("?q") ? url.concat(`&categoria=${categorias}`) : url.concat(`?categoria=${categorias}`)
+    const newUrl = createUrl(url,categorias)
     window.location.href = newUrl
 })
 
+
+
+const createUrl = (url,categorias) => {
+    const newUrl = url.includes("?q") ? 
+        url.includes("&") ? url.replace(/ria=.*/g,`ria=${categorias}`) : url.concat(`&categoria=${categorias}`) 
+        : url.concat(`?categoria=${categorias}`)
+    return newUrl
+}
