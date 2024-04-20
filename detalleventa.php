@@ -54,7 +54,7 @@ while ($row = $result->fetch_assoc()) {
     include("./api/sidebar.php");
     ?>
     <div class="content">
-    
+    <a href="./ventas.php">Volver</a>
     <table class="table-products">
         <caption>Detalle Venta</caption>
         <thead>
