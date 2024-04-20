@@ -13,6 +13,7 @@
         $sql = "SELECT * FROM productos WHERE estado = 0 LIMIT $offset,$cantidad_por_pagina";
         if (isset($_GET["categoria"])) {
             $categoria = $_GET["categoria"];
+            $total = "SELECT * FROM productos WHERE estado = 0 AND Categoría = '$categoria'";
             $sql = "SELECT * FROM productos WHERE estado = 0 AND Categoría = '$categoria' LIMIT $offset,$cantidad_por_pagina";
 
         };
@@ -184,7 +185,7 @@
             }
         }
         echo $newUrl;
-        ?>' class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 <?php if($pagenumber == $number_of_pages) echo 'bg-gray-100'?> border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 <?php if($pagenumber == $number_of_pages) echo 'pointer-events-none'?>">
+        ?>' class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 <?php if($pagenumber == $number_of_pages || $number_of_pages == 0) echo 'bg-gray-100'?> border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 <?php if($pagenumber == $number_of_pages || $number_of_pages == 0) echo 'pointer-events-none'?>">
             <span class="sr-only">Next</span>
             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 9 4-4-4-4"/>
