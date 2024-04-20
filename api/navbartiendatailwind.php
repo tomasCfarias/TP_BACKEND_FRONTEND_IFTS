@@ -93,6 +93,11 @@
                 <a href="settingsuser.php?user=<?= $_SESSION["userid_tienda"] ?>" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Settings</a>
               </div>
               <div class="p-2">
+                <a href="compras.php?user=<?= $_SESSION["userid_tienda"] ?>" class ="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
+                  Mis compras
+                </a>
+              </div>
+              <div class="p-2">
             <a href="api/signouttienda.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Sign Out</a>
               </div>
             </div>
