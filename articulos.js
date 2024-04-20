@@ -22,8 +22,20 @@ formButton.addEventListener("click", (e) => {
 
 
 const createUrl = (url,categorias) => {
-    const newUrl = url.includes("?q") ? 
-        url.includes("&") ? url.replace(/ria=.*/g,`ria=${categorias}`) : url.concat(`&categoria=${categorias}`) 
-        : url.concat(`?categoria=${categorias}`)
+        
+        if(url.includes("&ca") || url.includes("?ca")) {
+            newUrl =  url.replace(/ria=.*/g,`ria=${categorias}`) 
+        }
+        
+        else if(url.includes("?page"))  {
+            console.log("HERE")
+            newUrl = url.slice(0, url.indexOf(`?page`)) + `?categoria=${categorias}`
+        }
+        else if(url.includes("&page"))  {
+            newUrl = url.slice(0,url.indexOf(`&page`)) + `&categoria=${categorias}`
+        }
+        else {
+            newUrl = url.includes("?q") ? url.concat(`&categoria=${categorias}`) : url.concat(`?categoria=${categorias}`) 
+        }    
     return newUrl
 }
