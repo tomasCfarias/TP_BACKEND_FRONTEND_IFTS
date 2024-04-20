@@ -52,17 +52,26 @@
     ?>
     <div class="flex">
     <div class="my-2 lg:w-44">
-    <div class="hidden lg:block ml-2 lg:ml-3 p-3 border border-gray-200 bg-white rounded h-full shadow">
+    <div class="hidden lg:block ml-2 lg:ml-3 p-3 border border-gray-200 bg-white rounded h-contain shadow">
         <b>Filtros</b>
-            <form id = "filter_form">
-                <ul>
-                    <li><input type="radio" class="mr-1" name="categoria" value="1">Remeras</li>
-                    <li><input type="radio" class="mr-1" name="categoria" value="2">Pantalones</li>
-                    <li><input type="radio" class="mr-1" name="categoria" value="3">Camperas</li>
-                    <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Filtrar">Filtrar</button>
-                </ul>
-            </form>
+        <form id = "filter_form">
+            <ul>
+                <li><input type="radio" class="mr-1" name="categoria" value="1">Remeras</li>
+                <li><input type="radio" class="mr-1" name="categoria" value="2">Pantalones</li>
+                <li><input type="radio" class="mr-1" name="categoria" value="3">Camperas</li>
+                <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center disabled:opacity-25" <?php if(empty($_SESSION["login_user_tienda"])) {?> disabled <?php } ?> value="Filtrar">Filtrar</button>
+            </ul>
+        </form>
         
+        <form id = "order_form">
+            <ul>
+                <b>Ordenar por</b>
+                <li><input type="radio" class="mr-1" name="orden" value="1">Alfabético</li>
+                <li><input type="radio" class="mr-1" name="orden" value="2">Mas caros</li>
+                <li><input type="radio" class="mr-1" name="orden" value="3">Mas baratos</li>
+                <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center disabled:opacity-25" <?php if(empty($_SESSION["login_user_tienda"])) {?> disabled <?php } ?> value="Filtrar">Ordenar</button>
+            </ul>
+        </form>
         <!--    
             <label for="precio">Precio maximo</label>
                 <li><input name="Precio" type="range" min="1" max="10000" value="50"></li>
