@@ -1,0 +1,11 @@
+.conteiner-AgregarProv{
+    display: contents;
+    justify-content: center;
+    align-items: center;
+}
+
+.formNuevoProv{
+    width: 70%;
+    margin: 1rem;
+    padding: 1rem;
+}

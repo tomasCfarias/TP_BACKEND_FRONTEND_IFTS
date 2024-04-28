@@ -1,0 +1,30 @@
+body{
+    background-image: #1CB5E0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardSection{
+    width: 95%;
+    background-color: #1CB5E0;
+    padding: 2rem 0;
+    border-radius: 1rem;
+}
+
+h1{
+    padding-bottom: 1rem;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#tableContactos{
+    width: 95%;
+    margin: auto;
+    background-color: #1CB5E0;
+}
