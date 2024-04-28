@@ -9,25 +9,28 @@
     $cantidad_por_pagina = 8;
     $offset = $cantidad_por_pagina * $pagenumber == $cantidad_por_pagina ? 0 : $cantidad_por_pagina * ($pagenumber - 1);
     if (empty($_GET["q"])) {
+        $total = "SELECT * FROM productos WHERE estado = 0";  
         $sql = "SELECT * FROM productos WHERE estado = 0 LIMIT $offset,$cantidad_por_pagina";
         if (isset($_GET["categoria"])) {
             $categoria = $_GET["categoria"];
+            $total = "SELECT * FROM productos WHERE estado = 0 AND Categoría = '$categoria'";
             $sql = "SELECT * FROM productos WHERE estado = 0 AND Categoría = '$categoria' LIMIT $offset,$cantidad_por_pagina";
 
         };
     }
     else {
         $param = $_GET["q"];
+        $total = "SELECT * FROM productos WHERE estado = 0 AND Name LIKE '%$param%'";  
         $sql = "SELECT * FROM productos WHERE estado = 0 AND Name LIKE '%$param%' LIMIT $offset,$cantidad_por_pagina";
         if (isset($_GET["categoria"])) {
             $categoria = $_GET["categoria"];
+            $total = "SELECT * FROM productos WHERE estado = 0 AND Name LIKE '%$param%' AND Categoría = '$categoria'";
             $sql = "SELECT * FROM productos WHERE estado = 0 AND Name LIKE '%$param%' AND Categoría = '$categoria' LIMIT $offset,$cantidad_por_pagina";
         }
     }
         $result = $conn -> query($sql);
 
-        $query = "SELECT * FROM productos WHERE estado = 0";  
-        $res = mysqli_query($conn, $query);  
+        $res = mysqli_query($conn, $total);  
         $number_of_result = mysqli_num_rows($res);  
         $number_of_pages = ceil($number_of_result / $cantidad_por_pagina); 
 
@@ -49,17 +52,26 @@
     ?>
     <div class="flex">
     <div class="my-2 lg:w-44">
-    <div class="hidden lg:block ml-2 lg:ml-3 p-3 border border-gray-200 bg-white rounded h-full shadow">
+    <div class="hidden lg:block ml-2 lg:ml-3 p-3 border border-gray-200 bg-white rounded h-contain shadow">
         <b>Filtros</b>
-            <form id = "filter_form">
-                <ul>
-                    <li><input type="checkbox" class="mr-1" name="categoria" value="1">Remeras</li>
-                    <li><input type="checkbox" class="mr-1" name="categoria" value="2">Pantalones</li>
-                    <li><input type="checkbox" class="mr-1" name="categoria" value="3">Camperas</li>
-                    <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Filtrar">Filtrar</button>
-                </ul>
-            </form>
+        <form id = "filter_form">
+            <ul>
+                <li><input type="radio" class="mr-1" name="categoria" value="1">Remeras</li>
+                <li><input type="radio" class="mr-1" name="categoria" value="2">Pantalones</li>
+                <li><input type="radio" class="mr-1" name="categoria" value="3">Camperas</li>
+                <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center disabled:opacity-25" <?php if(empty($_SESSION["login_user_tienda"])) {?> disabled <?php } ?> value="Filtrar">Filtrar</button>
+            </ul>
+        </form>
         
+        <form id = "order_form">
+            <ul>
+                <b>Ordenar por</b>
+                <li><input type="radio" class="mr-1" name="orden" value="1">Alfabético</li>
+                <li><input type="radio" class="mr-1" name="orden" value="2">Mas caros</li>
+                <li><input type="radio" class="mr-1" name="orden" value="3">Mas baratos</li>
+                <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center disabled:opacity-25" <?php if(empty($_SESSION["login_user_tienda"])) {?> disabled <?php } ?> value="Filtrar">Ordenar</button>
+            </ul>
+        </form>
         <!--    
             <label for="precio">Precio maximo</label>
                 <li><input name="Precio" type="range" min="1" max="10000" value="50"></li>
@@ -115,7 +127,22 @@
     <nav class="flex justify-center" aria-label="Page navigation example">
     <ul class="flex items-center -space-x-px h-10 text-base">
         <li>
-        <a href='articulos.php?page=<?php echo $pagenumber - 1 ?>' class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 <?php if($pagenumber == 1) echo 'bg-gray-100'?> border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 <?php if($pagenumber == 1) echo 'pointer-events-none'?>">
+        <a href='<?php 
+        $url = $_SERVER["REQUEST_URI"];
+        if(str_contains($url,"page")) {
+            $newUrl = substr($url,0,-1) . $pagenumber-1 ;
+        } else {
+            if (str_contains($url,"?")) {
+                $url .= "&page=".$pagenumber-1;
+                $newUrl = $url;
+            }
+            else {
+                $url .= "?page=".$pagenumber-1;
+                $newUrl = $url;
+            }
+        }
+        echo $newUrl;    
+?>' class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 <?php if($pagenumber == 1) echo 'bg-gray-100'?> border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 <?php if($pagenumber == 1) echo 'pointer-events-none'?>">
             <span class="sr-only">Previous</span>
             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 1 1 5l4 4"/>
@@ -124,19 +151,50 @@
         </li>
         <?php 
         for($page = 1; $page<= $number_of_pages; $page++) {
+
         if ($page == $pagenumber) {
-            echo('<li>
-        <a href="articulos.php?page='. $page .'" class="z-10 flex items-center justify-center px-4 h-10 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">'. $page .'</a>
+        echo('<li>
+        <a href="'. $_SERVER["REQUEST_URI"] .'" class="z-10 flex items-center justify-center px-4 h-10 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">'. $page .'</a>
         </li>');
         }
-        else { echo('<li>
-        <a href="articulos.php?page='. $page .'" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">'. $page .'</a>
-        </li>');
+        else { 
+        
+        $url = $_SERVER["REQUEST_URI"];
+            if(str_contains($url,"page")) {
+                $newUrl = substr($url,0,-1) . $page ;
+            } else {
+                if (str_contains($url,"?")) {
+                    $url .= "&page=$page";
+                    $newUrl = $url;
+                }
+                else {
+                    $url .= "?page=$page";
+                    $newUrl = $url;
+                }
+            }
+            
+        echo('<li>
+        <a href=" '.$newUrl.' " class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">'. $page .'</a></li>');
         }
     }
         ?>
         <li>
-        <a href='articulos.php?page=<?php echo $pagenumber + 1 ?>' class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 <?php if($pagenumber == $number_of_pages) echo 'bg-gray-100'?> border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 <?php if($pagenumber == $number_of_pages) echo 'pointer-events-none'?>">
+        <a href='<?php 
+        $url = $_SERVER["REQUEST_URI"];
+        if(str_contains($url,"page")) {
+            $newUrl = substr($url,0,-1) . $pagenumber+1 ;
+        } else {
+            if (str_contains($url,"?")) {
+                $url .= "&page=".$pagenumber+1;
+                $newUrl = $url;
+            }
+            else {
+                $url .= "?page=".$pagenumber+1;
+                $newUrl = $url;
+            }
+        }
+        echo $newUrl;
+        ?>' class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 <?php if($pagenumber == $number_of_pages || $number_of_pages == 0) echo 'bg-gray-100'?> border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 <?php if($pagenumber == $number_of_pages || $number_of_pages == 0) echo 'pointer-events-none'?>">
             <span class="sr-only">Next</span>
             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 9 4-4-4-4"/>
