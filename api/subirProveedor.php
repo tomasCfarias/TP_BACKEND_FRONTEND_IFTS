@@ -27,11 +27,12 @@ if ($conn->query($sql) === TRUE) {
 
     echo '<script type="text/javascript">
     alert("El proveedor ha sido cargado con exito!.");
+    window.location.href="../proveedores.php"
     </script>';
     //flush();
     
     //sleep(1);
-    header("Location: ../proveedores.php");
+    //header("Location: ../proveedores.php");
 
     exit();
 } else {
