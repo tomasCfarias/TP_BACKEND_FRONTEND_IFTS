@@ -21,7 +21,11 @@
         $stmt->bind_param('ssss', $nombre, $email, $telefono, $id);
 
         if ($stmt->execute()) {
-            header("Location: proveedores.php");
+            //header("Location: proveedores.php");
+            echo '<script type="text/javascript">
+            alert("El proveedor ha sido modificado con exito!.");
+            window.location.href="./proveedores.php"
+            </script>';
             exit();
         } else {
             echo "Error en la actualización: " . $stmt->error;
