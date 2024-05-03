@@ -1,0 +1,67 @@
+
+.col1{
+    text-align: left;
+}
+
+.filtrar_ventas{
+    font-size: 1.5em;
+    display: inline-block;
+    width: 100%;
+    height: 90%;
+    font-weight: normal;
+    
+}
+
+.filtrar_ventas:hover{
+    background-color: black;
+    color: white;
+    
+}
+.filtrar_ventas:active,.filtrar_ventas:focus{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#id_venta{
+    font-size: 1em;
+    color: grey;
+}
+
+#email_comprador{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#valor_total{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#boton_marcar{
+    background: none;
+    border: none;
+    font-size: 17px;
+    margin: 4px;
+}
+
+#boton_marcar:hover{
+    background: wheat;
+}
+
+
+/* DETALLE VENTAS CSS */
+
+#imagen_venta{
+    width: 50%;
+    border: 1px solid #ccc
+}
+
+#volver_tabla{
+    display: inline-block;
+    font-size: 1.3em;
+    width: 100%;
+}
+#volver_tabla:hover{
+    background-color: black;
+    color: white;
+}
