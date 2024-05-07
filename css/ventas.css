@@ -45,7 +45,11 @@
 }
 
 #boton_marcar:hover{
-    background: wheat;
+    font-weight: bold;
+}
+
+.boton_detalle{
+    font-size: 1.4em;
 }
 
 

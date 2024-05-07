@@ -21,16 +21,16 @@
 
     if($resultado){
 
-        echo "<script>  
-            
-            alert('Se ha eliminado el proveedor exitosamente');
-            </script>";
-        header("Location: ./proveedores.php");
+        echo  '<script type="text/javascript">
+        alert("El proveedor ha sido eliminado con exito!.");
+        window.location.href="./proveedores.php"
+        </script>';
+        //header("Location: ./proveedores.php");
     }else{
-        echo "<script languaje='JavaScript'>  
-            alert('No se ha eliminado el proveedor');
-            location.assign('./proveedores.php');
-            </script>";
+        echo  '<script type="text/javascript">
+        alert("El proveedor no ha sido eliminado.");
+        window.location.href="./proveedores.php"
+        </script>';
     }
     // Cerrar la conexión
     //$conn->close();
