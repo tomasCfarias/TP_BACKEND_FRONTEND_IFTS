@@ -21,9 +21,10 @@ ul,li{
     padding: 0;
 }
 
-.nav-item {
+.nav-left,.nav-right {
     display: flex;
     gap: 15px;
+    padding: 10px 10px 0px 10px;
 }
 .dropdown-menu {
     background-color: rgb(255, 255, 255);
@@ -52,14 +53,11 @@ ul,li{
     right: 6.5%;
 }
 
-.nav-item>* {
-    padding: 10px;
-}
 
 .nav-item>*:hover {
     cursor: pointer;
-    background-color: gainsboro;
 }
+
 .usuarios:hover .users , .productos:hover .products {
     display : block
 }
@@ -70,4 +68,38 @@ ul,li{
     border: none;
     background-color: inherit;
 
+}
+
+
+.notif-number {
+    margin: 0;
+    position: relative;
+    top: -15px;
+    right: 10px;
+    color: white;
+    background-color: red;
+    text-align: center;
+    border-radius: 30px;
+}
+
+
+.hideNotif {
+    visibility: hidden;
+}
+
+.notif-menu {
+    position: absolute;
+    right: 25px;
+    max-width: 200px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.notif-menu>ul>li {
+    padding: 10px;
+}
+.notif-menu>ul>li:hover {
+    background-color: aliceblue;
 }
