@@ -6,7 +6,6 @@ btn.addEventListener("click", openNav)
 closebutton.addEventListener("click",closeNav)
 notification.addEventListener("click",toggleNotificationVisibility)
 
-
 function openNav() {
     document.getElementsByClassName("sidebar")[0].style.width = "200px";
   }

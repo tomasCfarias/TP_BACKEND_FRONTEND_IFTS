@@ -100,6 +100,6 @@ ul,li{
 .notif-menu>ul>li {
     padding: 10px;
 }
-.notif-menu>ul>li:hover {
+.notif-menu>ul>div>li:hover {
     background-color: aliceblue;
 }
