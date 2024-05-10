@@ -43,5 +43,7 @@
     if ($count > 0) {
         $data = array("notification" => $output , "count" => $count);
         echo json_encode($data,JSON_UNESCAPED_SLASHES);
+    } else {
+        echo json_encode(array("count" => 0));
     }
 ?>

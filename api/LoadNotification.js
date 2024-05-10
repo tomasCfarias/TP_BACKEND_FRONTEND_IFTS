@@ -1,3 +1,4 @@
+const notificationMenu = document.getElementsByClassName("notif-menu")[0]
 
 const getNewSalesNotifications = async () => {
     const res = await fetch("api/fetchNewSales.php", {
@@ -26,22 +27,28 @@ const loadNotifications = async () => {
         const newSalesNotifications = await getNewSalesNotifications()
         const lowStockNotifications = await getLowStockNotifications()
 
+        if (notificationMenu.classList.contains("hideNotif")) {
+        if (newSalesNotifications.count == 0 && lowStockNotifications.count == 0) {
+            notificationsList.innerHTML = '<li>No hay nuevas notificaciones.</li>'
+        }
 
-        notificacionCount.innerHTML = newSalesNotifications.count + lowStockNotifications.count
-        notificationsList.innerHTML = ""
-        newSalesNotifications.notification.forEach(element => {
+        else {
+            notificationsList.innerHTML = ""
+            newSalesNotifications.count > 0 && newSalesNotifications.notification.forEach(element => {
+                
+                const div = document.createElement("div")
+                div.innerHTML = element
+                notificationsList.prepend(div)
+            });
             
-            const div = document.createElement("div")
-            div.innerHTML = element
-            notificationsList.prepend(div)
-        });
-
-        lowStockNotifications.notification.forEach(e => {
-            const div = document.createElement("div")
-            div.innerHTML = e
-            notificationsList.prepend(div)
-        })
-
+            lowStockNotifications.count > 0 && lowStockNotifications.notification.forEach(e => {
+                const div = document.createElement("div")
+                div.innerHTML = e
+                notificationsList.prepend(div)
+            })
+            notificacionCount.innerHTML = notificationsList.children.length
+        }
+    }
         setTimeout(loadNotifications,7000)
 
     

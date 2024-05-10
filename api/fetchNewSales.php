@@ -16,7 +16,6 @@
             $res = $conn ->  query($sql);
         }
     }
-    $data = array("notification" => $output, "count" => 5);
     
     //Marca las ventas como notificadas
     $sql = "UPDATE ventas SET notificado = 1 WHERE notificado = 0";
@@ -39,5 +38,7 @@
     if ($count > 0) {
         $data = array("notification" => $output, "count" => $count);
         echo json_encode($data,JSON_UNESCAPED_SLASHES);
+    } else {
+        echo json_encode(array("count" => 0));
     }
 ?>
