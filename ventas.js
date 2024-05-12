@@ -34,8 +34,6 @@ function guardarFecha(fila, columna, fecha) {
 }
 
 
-
-
 botonesMarcarEnvio.forEach(boton => {
     boton.addEventListener('click', () => {
         const fila = boton.closest('tr').dataset.id; // Obtener el ID de la fila padre del botón

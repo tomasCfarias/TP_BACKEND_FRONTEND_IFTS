@@ -54,10 +54,11 @@ $result = $conn->query($sql);
                             }
                             echo "<tr data-id='" . $row["IdVenta"] . "' class='venta-".$estado."'>";
                                 echo "<td class='col1' data-label='ID'>". "<p id='id_venta'>#" . $row["IdVenta"]."</p>" ."</br> ". "<p id='valor_total'>Valor Total $" . $row["preciototal"]."</p>"."</br>".
-                                "Fecha de Venta: " .$row["fechaVenta"]."</br>"."<div class='fecha-envio'>Fecha de envío: " .$row["fechaEnvio"]."</div>". 
-                                "<div class='fecha-entrega'>Fecha de entrega: " .$row["fechaEntrega"] ."</div>"."</td>";   
+                                "Fecha de Venta: " .$row["fechaVenta"]."</br>"."<div class='fecha-envio'>Fecha de envío: " .($row["fechaEnvio"] == '0000-00-00' ? 'Sin enviar' : $row["fechaEnvio"])."</div>". 
+                                "<div class='fecha-entrega'>Fecha de entrega: " .($row["fechaEntrega"] == '0000-00-00' ? 'Sin entregar' : $row["fechaEntrega"])."</div>"."</td>";   
                                 echo "<td data-label='Email'>"."<p id='email_comprador'>Email Comprador"."</p>" . $row["email"] . "</td>";
-                                echo "<td data-label='Accion'><a href='detalleventa.php?id=" . $row["IdVenta"]."'id='crudM'" . ">Ver Detalle</a></br>"; 
+
+                                echo "<td data-label='Accion'><a href='detalleventa.php?id=" . $row["IdVenta"]."'id='crudM' class='boton_detalle' " . ">Ver Detalle</a></br>"; 
                                 
                                 if($row['fechaEnvio'] == "0000-00-00") {
                                     echo "<button id='boton_marcar' class='marcar-envio'>Marcar como enviado</button></br>";

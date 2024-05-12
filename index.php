@@ -35,5 +35,6 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         </div>     
 </body>
 <script src="navbar.js"></script>
+<script src="./api/LoadNotification.js"></script>
 </html>
 

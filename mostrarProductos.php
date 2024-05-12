@@ -11,7 +11,7 @@
     $sql = "SELECT * FROM productos";
     $result = $conn -> query($sql);
 
-    $conn ->close();
+    
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +45,7 @@
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
             <th scope="col">Descripción</th>
+            <th scope="col">Proveedor</th>
             <th scope="col">Estado</th>
             <th scope="col">Accion</th>
             <th scope="col">Accion</th>
@@ -62,12 +63,18 @@ if ($result->num_rows > 0) {
             $estado = "Inactivo";
         }
 
+        $id = $row["IdProveedor"];
+        $sql = "SELECT nombre FROM proveedores WHERE $id = id";
+        $req = $conn -> query($sql);
+        $nombreproveedor = mysqli_fetch_row($req)[0];
+        
         echo "<tr>";
         echo "<td scope='row' data-label='ID'>" . $row["Id"] . " "."</td>";
         echo "<td data-label='Nombre'>" . $row["Name"] ." ". "</td>";
         echo "<td data-label='Cantidad'>" . $row["quantity"] . " "."</td>";
         echo "<td data-label='Precio'>" . $row["price"] ." ". "</td>";
         echo "<td data-label='Descripción'>" . $row["description"] ." ". "</td>";
+        echo "<td data-label='Proveedor'>" . $nombreproveedor ." ". "</td>";
         echo "<td data-label='Estado'>" . $estado ."</td>";
         echo "<td data-label='Accion'><a href='modificarProducto.php?id=" . $row['Id'] . "' id = 'crudM'>MODIFICAR</a></td>";
 

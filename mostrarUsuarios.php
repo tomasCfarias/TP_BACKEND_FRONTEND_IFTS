@@ -69,7 +69,6 @@ if ($result->num_rows > 0) {
     </div>
     </div>
     
-    <script src="navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
     <script type="text/javascript">
         
