@@ -3,7 +3,7 @@
         <li><a href="mostrarProductos.php">Productos</a></li>
         <li><a href="subirProducto.php">Nuevo Producto</a></li>
         <li><a href="ventas.php">Ventas</a></li>
-        <li><a href="#">Estadisticas</a></li>
+        <li><a href="./graficos/index.html">Estadisticas</a></li>
         <li><a href="proveedores.php">Proveedores</a></li>
         <li><a href="listaContactos.php">Lista de mensajes</a></li>
 

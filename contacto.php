@@ -32,7 +32,7 @@
         
         <div class="contact-wrapper">
             <div class="contact-form">
-                <form id="formContacto" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+                <form id="formContacto" method="post" action="./email/index.php">
 
                     <div class="mb-3">
 
@@ -71,7 +71,7 @@
                         <a type="button" class="btn btn-light m-2" style=" text-align: center;" href="articulos.php"> Volver</a>
                     </p>
                     <?php
-                    include("validar1.php");
+                    //include("validar1.php"); PASAR CONTACTO.PHP A LA CARPETA DEL MAILER PARA TRABAJAR MAS FACIL Y VER SI X LO MENOS SE ENVIAN LOS MENSAJE
 
                     ?>
                 </form>
