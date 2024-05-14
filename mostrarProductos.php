@@ -27,6 +27,14 @@
 </head>
 <link rel="stylesheet" href="./css/mostrarusuarios.css">
 <link rel="stylesheet" href="./css/navbar.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
 <body>
     <?php
         include_once("./api/navbar.php")
@@ -36,7 +44,7 @@
         include_once("./api/sidebar.php")
     ?>
     <div class="content">
-    <table class="table-products">
+    <table id="myTable" class="table-products">
         <caption>Productos</caption>
         <thead>
             <tr>

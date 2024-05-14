@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css"/>
 <?php
 session_start();
 
@@ -18,17 +19,29 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ventas</title>
+    
+    
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/mostrarusuarios.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/ventas.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+    
 </head>
 <body>
     <?php include_once("./api/navbar.php") ?>
     <div class="main-container">
         <?php include("./api/sidebar.php") ?>
         <div class="content">
-            <table class="table-products">
+            <table id="myTable"class="table-products">
                 <caption>Ventas</caption>
                 <thead>
                     <tr>
@@ -86,5 +99,13 @@ $result = $conn->query($sql);
     </div>
     <script src="navbar.js"></script>
     <script src="ventas.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script> -->
 </body>
 </html>

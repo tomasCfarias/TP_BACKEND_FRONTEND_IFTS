@@ -21,6 +21,14 @@ $result = $conn -> query($sql);
     <link rel="stylesheet" href="./css/proveedores.css">
     <link rel="stylesheet" href="./css/mostrarusuarios.css">
     <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
     <script type="text/javascript">
         function confirmar(){
             return confirm("Estas seguro?. Se eliminara el provedor");
@@ -50,7 +58,7 @@ $result = $conn -> query($sql);
         
        
 
-        <table class="table-proveedores">
+        <table id="myTable" class="table-proveedores">
         
             <thead>
                 
