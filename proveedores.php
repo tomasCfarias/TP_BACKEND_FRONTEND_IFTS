@@ -19,9 +19,9 @@ $result = $conn -> query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/proveedores.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
     <link rel="stylesheet" href="./css/mostrarusuarios.css">
     <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
     <script>
@@ -49,10 +49,7 @@ $result = $conn -> query($sql);
     <div>
         <div class="titular m-1" >
             <h3>Proveedores</h3>
-            
             <a type="button" class="btn btn-success" href="formProveedor.php">Agregar proveedor</a>
-
-            <a type="button" class="btn btn-success" href="consultar.php">Consultar</a>
         </div>
 
         
@@ -67,8 +64,8 @@ $result = $conn -> query($sql);
                     <th scope="col">Nombre</th>
                     <th scope="col">Email</th>
                     <th scope="col">Telefono</th>
-                    <!--<th scope="col">Consulta-->
                     <th scope="col">Modificar</th>
+                    <th scope="col">Accion</th>
                     <th scope="col">Borrar</th>
                 </tr>
             </thead>
@@ -82,9 +79,9 @@ $result = $conn -> query($sql);
                         echo "<td data-label='Nombre'>" . $row["Nombre"] ." ". "</td>";
                         echo "<td data-label='Email'>" . $row["Email"] . " "."</td>";
                         echo "<td data-label='Telefono'>" . $row["Telefono"] . " "."</td>";
-                        //echo "<td data-label='Consulta'><a type='button' href=consultar.php>Consultar</a></td>";
-                        echo "<td data-label='Modificar'><a href=modificarProveedor.php?id=" . $row['id'] . " ' id = 'modificarProveedor'>Modificar</a></td>";
-                        echo  "<td data-label='Borrar'><a  href=borrarProveedor.php?id="  . $row['id'] . "  ' id = 'borrarProveedor' onclick='return confirmar()'>Borrar</a></td>";
+                        echo "<td data-label='Modificar'><a href=modificarProveedor.php?id=" . $row['id'] . " ' id = 'modificarProveedor'><svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#5f6368'><path d='M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z'/></svg></a></td>";
+                        echo "<td data-label='Accion'><a href='#' id = pedidoProveedor>Pedido</a></td>";
+                        echo  "<td data-label='Borrar'><a  href=borrarProveedor.php?id="  . $row['id'] . "  ' id = 'borrarProveedor' onclick='return confirmar()'><svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#5f6368'><path d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z'/></svg></a></td>";
                         
                     }   
                 } else {
@@ -99,55 +96,11 @@ $result = $conn -> query($sql);
         </table>
 
 
-        <!-- Editar producto 
-        <div class="modal fade" id="editProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editProductLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="editProductLabel">Editar producto</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="edit_form">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">Nombre</span>
-                                    <input type="text" id="edit_name" class="form-control" onkeyup="prueba()" placeholder="Nombre del producto" aria-label="nombre del producto" aria-describedby="basic-addon1">
-                                </div>
-                                <p id="editName_error" class="text-danger text-center" style="display: none;">El nombre
-                                    del producto debe tener entre 3 o 20 caracteres.</p>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">SN</span>
-                                    <input type="text" id="edit_sn" class="form-control" placeholder="Número de serie" aria-label="número de serie" aria-describedby="basic-addon1">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">Cantidad</span>
-                                    <input type="number" id="edit_cant" class="form-control" placeholder="Cantidad" aria-label="cantidad" aria-describedby="basic-addon1">
-                                </div>
-                                <select class="form-select mb-3" id="edit_mot">
-                                    <option value="" selected disabled> Selecione motivo</option>
-                                    <option value="Transferencia">Transferencia</option>
-                                    <option value="Corrección de producto">Correcciones varias</option>
-                                    <option value="Corrección de nombre">Corrección de nombre</option>
-                                    <option value="Corrección de sn">Corrección de sn</option>
-                                    <option value="Corrección de cantidad">Corrección de cantidad</option>
-                                    <option value="Producto no existente">Producto no existente</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-warning" data-bs-dismiss="modal" onclick="editProduct()">Editar</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
-                </div>
-            </div>
-        </div>-->
+       
 
     </div>
 
     <script src="confirmacion.js"></script>
-    <script src="https://kit.fontawesome.com/ce1f10009b.js" crossorigin="anonymous"></script>
-    <script src="editarProveedor.js"></script>
-    <script src="navbar.js"></script>
     <script src="./api/LoadNotification.js"></script>
 </body>
 

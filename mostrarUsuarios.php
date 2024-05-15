@@ -72,23 +72,9 @@ if ($result->num_rows > 0) {
 ?>
         </tbody>
     </table>
-    <button class="button" id="pdfout"><a href="pdfoutput.php?type=user">Exportar a pdf</a></button>
-    <button class="button" id="excelout" onclick="exportarAExcel()">Exportar a excel</button>
     </div>
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
-    <script type="text/javascript">
-        
-        const exportarAExcel = () => {
-            var table = document.getElementsByClassName("table-products")[0]
-            TableToExcel.convert(table, {
-                name: "usuarios.xlsx",
-                sheet: {
-                    name: "Sheet 1"
-                }
-            })
-        }
-    </script>
+    
 </body>
 </html>

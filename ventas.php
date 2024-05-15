@@ -9,7 +9,7 @@ if(!isset($_SESSION['login_user'])){
 include("./api/connection.php");
 $conn = conexion();
 
-$sql = "SELECT * FROM ventas JOIN usuarios ON ventas.IdCliente = usuarios.id ORDER BY ventas.fechaVenta DESC;"; //IF(fechaEntrega = '0000-00-00', 'Activas', IF(fechaEnvio != '0000-00-00', 'Completadas', 'Activas')) AS estado
+$sql = "SELECT * FROM ventas JOIN usuarios ON ventas.IdCliente = usuarios.id ORDER BY ventas.fechaVenta DESC;"; 
 $result = $conn->query($sql);
 ?>
 
@@ -99,13 +99,9 @@ $result = $conn->query($sql);
     </div>
     <script src="navbar.js"></script>
     <script src="ventas.js"></script>
+    <script src="./api/LoadNotification.js"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script> -->
+
+    
 </body>
 </html>

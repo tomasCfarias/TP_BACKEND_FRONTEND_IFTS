@@ -5,11 +5,13 @@
     
 
     display: flex;
-    justify-content: space-evenly;
+    padding: 10px;
+    justify-content: space-between;
     margin: auto;
     margin-top: auto;
 
 }
+
 
 .tabla-contenedor{
     background-color: var(--grey);
@@ -49,4 +51,15 @@
     color: #fff;
     background-color: #28a745;
     border-color: #28a745;
+}
+
+#pedidoProveedor {
+    background-color: rgb(52, 237, 73);
+    padding: 6px;
+    font-weight: bold;
+}
+
+#borrarProveedor, #modificarProveedor {
+    display: flex;
+    justify-content: center;
 }

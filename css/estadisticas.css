@@ -1,11 +1,6 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #6190E8;
-    
 }
 
 h2{
@@ -27,5 +22,6 @@ h2{
 }
 
 canvas{
-    max-width: 100%;
+width: 350px;
+height: 350px;
 }

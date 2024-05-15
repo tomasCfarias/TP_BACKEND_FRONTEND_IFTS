@@ -47,7 +47,7 @@ table {
   }
   
   table th {
-    font-size: .85em;
+    font-size: .8em;
     letter-spacing: .1em;
     text-transform: uppercase;
   }
@@ -132,4 +132,10 @@ table {
     background-color: rgb(52, 237, 73);
     padding: 6px;
     font-weight: bold;
+}
+
+.container-top {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
