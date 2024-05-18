@@ -35,7 +35,7 @@
         $mail -> SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail ->setFrom('pepito@gmail.com', 'Pepito code');
+        $mail ->setFrom('pepito@gmail.com', 'Email de prueba');
         $mail -> addAddress('germanluisponzio@gmail.com', ' Pepito new style');
 
         $mail -> isHTML(true);
