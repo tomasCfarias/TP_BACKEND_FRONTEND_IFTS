@@ -3,6 +3,8 @@ const botonesMarcarRecibido = document.querySelectorAll(".marcar-recibido");
 const botonesMarcarNoEnvio = document.querySelectorAll(".marcar-no-enviado");
 const botonesMarcarNoRecibido = document.querySelectorAll(".marcar-no-recibido");
 
+
+
 function generarFecha(){
     const ahora = new Date();
     const dia = String(ahora.getDate()).padStart(2, '0');

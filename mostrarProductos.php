@@ -27,6 +27,14 @@
 </head>
 <link rel="stylesheet" href="./css/mostrarusuarios.css">
 <link rel="stylesheet" href="./css/navbar.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
 <body>
     <?php
         include_once("./api/navbar.php")
@@ -36,8 +44,11 @@
         include_once("./api/sidebar.php")
     ?>
     <div class="content">
-    <table class="table-products">
-        <caption>Productos</caption>
+        <div class="container-top">
+            <h1>Productos</h1>
+            <a class="button" href="subirProducto.php">Nuevo Articulo</a>
+        </div>
+    <table id="myTable" class="table-products">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -92,31 +103,11 @@ if ($result->num_rows > 0) {
 ?>  
         </tbody>
     </table>
-    <a class="button" href="subirProducto.php">Nuevo Articulo</a>
-    <button class="button" id="pdfout"><a href="pdfoutput.php?type=products">Exportar a pdf</a></button>
-    <button class="button" id="excelout" onclick="exportarAExcel()">Exportar a excel</button>
     </div>
     </div>
    
     <script src="navbar.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
-    <script type="text/javascript">
-
-        const exportarAExcel = () => {
-            var table = document.getElementsByClassName("table-products")[0]
-            TableToExcel.convert(table, {
-                name: "productos.xlsx",
-                sheet: {
-                    name: "Sheet 1"
-                }
-            })
-        }
-
-
+    <script src="./api/LoadNotification.js"></script>
     
-
-    </script>
 </body>
 </html>

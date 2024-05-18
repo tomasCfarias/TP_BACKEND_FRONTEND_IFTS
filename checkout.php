@@ -17,7 +17,7 @@
         //Crea conexion y crea entrada en la tabla de ventas
         $conn = conexion();
         $id = $_SESSION['userid_tienda'];
-        $sql = "INSERT INTO ventas (idCliente) VALUES ('$id')";
+        $sql = "INSERT INTO ventas (idCliente,fechaEntrega,fechaEnvio) VALUES ('$id','0000-00-00','0000-00-00')";
 
         //Selecciona el ID de la ultima venta creada para usarlo en el detalle de ventas
         $result = $conn -> query($sql);
