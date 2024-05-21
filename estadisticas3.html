@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mostrarusuarios.css">
+    <link rel="stylesheet" href="css/estadisticas.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <title>Graficos e-commerce</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!--<header>
+        <nav class="navbar">
+             Navigation content here 
+        </nav>
+    </header>
+    <div class="main-container">
+        <ul class="sidebar">
+            
+        </ul>
+        <canvas id="productosMasVendidosChart" width="400" height="200"></canvas>
+    </div>-->
+    
+    <div class="container">
+
+        <div class="head">
+            <h2>Graficos del ecommerce</h2>
+            <div class="botonVolver">
+                <a type="button" class="btn btn-light m-2" style=" text-align: center;" href="index.php">Volver</a>
+            </div>
+        </div>
+        <section class="content">
+            
+            <div class="container overflow-hidden text-center">
+                <div class="row g-2">
+                    <div class="col-4" >
+                        <canvas id="productosMasVendidosChart"></canvas>
+                    </div>
+
+                    <div class="col-4">
+                        <canvas id="topClientesChart"></canvas>
+                    </div>
+
+                    <!--<div class="col-4">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+
+                    <div class="col-4">
+                        <canvas id="myChart4"></canvas>
+                    </div>-->
+
+                </div>
+            </div>
+            
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener datos desde el servidor
+            fetch('estadisticas.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la respuesta de la red');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Procesar datos para Chart.js
+                    const labels = data.map(item => `Producto ${item.nombreProducto}`);
+                    const values = data.map(item => item.total_vendidos);
+
+                    // Crear gráfico
+                    const ctx = document.getElementById('productosMasVendidosChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar', // Tipo de gráfico: 'bar', 'line', 'pie', etc.
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Producto mas vendido',
+                                data: values,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error al obtener datos:', error));
+        });
+    </script>
+
+    <!-- Tres mejores clientes -->
+    <script>
+        // Obtener datos desde el servidor
+        fetch('estadisticas.php') 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta de la red');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Procesar datos para Chart.js
+                const labels = data.map(item => item.Name);
+                const values = data.map(item => item.total_compras);
+
+                // Crear gráfico
+                const ctx = document.getElementById('topClientesChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar', // Tipo de gráfico: 'bar', 'line', 'pie', etc.
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Total Compras',
+                            data: values,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error al obtener datos:', error));
+    </script>
+
+
+    <script src="navbar.js"></script>
+    <script src="./api/LoadNotification.js"></script>
+
+    <!--<script src="navbar.js"></script>
+    <script src="./api/LoadNotification.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="graphs.js"></script>-->
+
+</body>
+</html>

@@ -6,7 +6,41 @@ const ropa = ['Remeras','Pantalones','Casacas', 'Buzos'];
 const ventas = [3, 5 , 10 , 13];
 
 
-const myChart = new Chart(ctx,{
+// nuevo fetch para traer desde la base de datos 
+
+/*document.addEventListener('DOMContentLoaded', function() {
+    fetch('estadisticas.php')  // Cambia 'ruta_a_tu_script_php.php' por la ruta correcta a tu script PHP
+        .then(response => response.json())
+        .then(data => {
+            const labels = data.map(item => item.nombre);
+            const values = data.map(item => item.total_vendidos);
+
+            const ctx = document.getElementById('productosMasVendidosChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Productos Más Vendidos',
+                        data: values,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+});*/
+
+
+/*const myChart = new Chart(ctx,{
     type: 'bar',
     data: {
         labels: ropa,
@@ -120,4 +154,4 @@ const myChart4 = new Chart(ctx4,{
 
         }]
     }
-})
+})*/
