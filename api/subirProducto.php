@@ -17,8 +17,14 @@ $name = $_POST["nombre"];
 $price = $_POST["precio"];
 $quantity = $_POST["cantidad"];
 $description = $_POST["descripcion"];
+$proveedor = $_POST["proveedor"];
 
-$sql = "INSERT INTO productos (Name, quantity, price, description,img_url) VALUES ('$name', '$quantity', '$price','$description','$new_name')";
+$sql = "SELECT id from proveedores WHERE Nombre = '$proveedor'";
+$res = $conn->query($sql);
+$proveedor = mysqli_fetch_column($res);
+
+
+$sql = "INSERT INTO productos (Name, quantity, price, description,img_url, idProveedor) VALUES ('$name', '$quantity', '$price','$description','$new_name','$proveedor')";
 
 if ($conn->query($sql) === TRUE) { 
     header("Location: ../mostrarProductos.php");

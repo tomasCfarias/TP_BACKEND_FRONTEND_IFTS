@@ -4,6 +4,15 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
     header("Location: login.php");
 }
 
+include('./api/connection.php');
+$conn = conexion();
+
+
+$sql= "SELECT * from proveedores";
+$result = $conn ->  query($sql);
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +36,17 @@ if(!isset($_SESSION['login_user'])){ //if login in session is not set
         <h2>Publicación</h2>
         <label for="usuario">Nombre</label>
         <input type="text" name="nombre" id="nombre" required>
+        <label for="proveedor">Proveedor</label>
+        <select id="proveedor" name="proveedor">
+        <?php 
+
+                if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo( '<option value='.$row["Nombre"].'>'.$row["Nombre"].'</option>');
+                    }
+                }
+        ?>
+        </select>
         <label for="precio">Precio</label>
         <input type="number" name="precio" id="precio" required>
         <label for="cantidad">Cantidad</label>
