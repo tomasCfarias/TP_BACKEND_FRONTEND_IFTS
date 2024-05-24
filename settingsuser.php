@@ -98,8 +98,25 @@
  }
   ?>    
 
-    <h1>Modificar</h1> 
+    <h1>Modificar</h1>
+      <?php 
+
+        $iduser = $_SESSION["userid_tienda"];
+        $sql = "SELECT * from usuarios WHERE id='$iduser'";
+        $result = $conn -> query($sql);
+        $current = mysqli_fetch_array($result);
+        $currentemail = $current[1];
+        $currentuser = $current[2];
+
+      ?>
+      
+      
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2"> 
+      <div for="email" class="block text-sm font-medium leading-6 text-gray-900">Email actual</div>
+      <div for="email" class="block text-sm font-normal leading-6 text-gray-900"><?php echo $currentemail ?></div>
+      <div for="email" class="block text-sm font-medium leading-6 text-gray-900">Usuario actual</div>
+      <div for="email" class="block text-sm font-normal leading-6 text-gray-900"><?php echo $currentuser ?></div>
+
       <div>
         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Nuevo email</label>
         <div class="mt-2">
