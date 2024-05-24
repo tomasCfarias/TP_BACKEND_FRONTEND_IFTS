@@ -54,7 +54,7 @@ $result = $conn -> query($sql);
                                 <td>".$row['Nombre']."</td>
                                 <td> $".$row['precioPedido']."</td>
                                 <td>".$row['fechaPedido']."</td>
-                                <td><a href='#' id = 'crudM'>Ver detalle</a></td>
+                                <td><a href='detallepedido.php?id=".$row["idPedido"]."' id = 'crudM'>Ver detalle</a></td>
                                
                                 </tr>
                             ";
