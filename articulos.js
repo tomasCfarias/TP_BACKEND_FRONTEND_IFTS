@@ -28,7 +28,6 @@ const createUrl = (url,categorias) => {
         }
         
         else if(url.includes("?page"))  {
-            console.log("HERE")
             newUrl = url.slice(0, url.indexOf(`?page`)) + `?categoria=${categorias}`
         }
         else if(url.includes("&page"))  {

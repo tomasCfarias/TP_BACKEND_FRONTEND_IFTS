@@ -4,6 +4,7 @@
         <li><a href="ventas.php">Ventas</a></li>
         <li><a href="estadisticas.php">Estadisticas</a></li>
         <li><a href="proveedores.php">Proveedores</a></li>
+        <li><a href="listapedidos.php">Historial de pedidos</a></li>
         <li><a href="listaContactos.php">Lista de mensajes</a></li>
         <li class="tiendabtn"><a href="articulos.php"><h3>Ir a la tienda</h3></a></li>
     </ul>
