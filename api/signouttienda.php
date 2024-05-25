@@ -1,7 +1,11 @@
 <?php
    session_start();
    
-   if(session_destroy()) {
-      header("Location: ../login-tienda.php");
-   }
+  
+   unset($_SESSION["login_user_tienda"]);
+   unset($_SESSION["userid_tienda"]);
+   unset($_SESSION["cart_list"]);
+   unset($_SESSION['visitado']);
+   header("Location: ../login-tienda.php");
+   
 ?>

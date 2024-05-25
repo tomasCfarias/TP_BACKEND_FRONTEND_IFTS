@@ -4,6 +4,22 @@ $conn = conexion();
 $id = $_GET["id"];
 session_start();
 include("api/acarrito.php");
+
+
+
+function addVisit($id,$conn) {
+    $query = "UPDATE productos SET visitas = visitas + 1 WHERE Id = $id ";
+    mysqli_query($conn,$query);
+};
+
+if(isset($_SESSION['login_user_tienda'])) {
+    if (empty($_SESSION['visitado'][$id])) {
+        $_SESSION['visitado'][$id] = true;
+        addVisit($id,$conn);
+    }
+}
+
+
 if(isset($_SESSION['login_user_tienda'] ) && !empty($_SESSION["cart_list"])){ 
     $incart = key_exists("$id",$_SESSION["cart_list"]) ? intval($_SESSION["cart_list"]["$id"][2]) : 0;
 }
