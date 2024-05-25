@@ -37,12 +37,12 @@
             return $data;
         }
         function getTopClientes($conn) {
-            $sql = "SELECT v.IdCliente, c.Name, SUM(v.preciototal) AS total_compras
+            $sql = "SELECT u.username, SUM(v.preciototal) AS total_compras
                 FROM ventas v
-                JOIN clientes c ON v.IdCliente = c.Id
-                GROUP BY v.IdCliente, c.Name
-                ORDER BY total_compras DESC, v.IdCliente ASC
-                LIMIT 5";
+                JOIN usuarios u ON v.idCliente = u.id
+                GROUP BY v.idCliente, u.username
+                ORDER BY total_compras DESC
+                LIMIT 3";
     
             $result = $conn->query($sql);
             if (!$result) {
@@ -55,17 +55,79 @@
             return $data;
         }
 
+        function getVentasPorDiaDeMayo($conn) {
+            $sql = "SELECT DAY(fechaVenta) AS dia, SUM(preciototal) AS total_ventas
+                    FROM ventas
+                    WHERE MONTH(fechaVenta) = 5 AND YEAR(fechaVenta) = 2024
+                    GROUP BY DAY(fechaVenta)
+                    ORDER BY dia";
+            
+            $result = $conn->query($sql);
+            if (!$result) {
+                die('Error en la consulta: ' . $conn->error); // Verifica errores en la consulta
+            }
+            $data = [];
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
+        function getProductosMasVisitados($conn) {
+            $sql = "SELECT Name, visitas
+                    FROM productos
+                    ORDER BY visitas DESC
+                    LIMIT 5";
+        
+            $result = $conn->query($sql);
+            if (!$result) {
+                die('Error en la consulta: ' . $conn->error); // Verifica errores en la consulta
+            }
+            $data = [];
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
+        function getVentasPorCategoria($conn) {
+            $sql = "SELECT c.Categoría, SUM(dv.cantidad) AS total_vendidos
+                FROM detalleventas dv
+                JOIN productos p ON dv.idProducto = p.Id
+                JOIN categorías c ON p.Categoría = c.id
+                GROUP BY c.Categoría
+                ORDER BY total_vendidos DESC";
+            
+            $result = $conn->query($sql);
+            if (!$result) {
+                die('Error en la consulta: ' . $conn->error);
+            }
+            $data = [];
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
         $productosMasVendidos = getProductosMasVendidos($conn);
-        //$top_clientes = getTopClientes($conn);
+        $top_clientes = getTopClientes($conn);
+        $ventasPorDiaDeMayo = getVentasPorDiaDeMayo($conn);
+        $productosMasVisitados = getProductosMasVisitados($conn);
+        $ventasPorCategoria = getVentasPorCategoria($conn);
+        
 
 
         // Obtener datos y enviarlos en formato JSON
         header('Content-Type: application/json');
-        echo json_encode(getProductosMasVendidos($conn));
-        /*echo json_encode([
-            //'topClientes' => $top_clientes,
-            'topVentas' => $productosMasVendidos
-        ]);*/
+        //echo json_encode(getProductosMasVendidos($conn));
+        //echo json_encode(getTopClientes($conn));
+        echo json_encode([
+            'topClientes' => $top_clientes,
+            'topVentas' => $productosMasVendidos,
+            'ventasPorDiaDeMayo' => $ventasPorDiaDeMayo,
+            'prodMasVisitados' => $productosMasVisitados,
+            'ventasPorCategoria' => $ventasPorCategoria
+        ]);
         //echo json_encode(getTopClientes($conn));
 
         $conn->close();
