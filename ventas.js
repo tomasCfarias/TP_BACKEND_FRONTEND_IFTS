@@ -26,7 +26,7 @@ function guardarFecha(fila, columna, fecha) {
             throw new Error("Error al guardar la fecha");
         }
         console.log("Fecha guardada exitosamente ", fila, columna, fecha);
-        setTimeout(() => { //recarga la pagina automaticamente
+        setTimeout(() => { // recarga la pagina automaticamente
             location.reload();
         }, 1000);
     })
