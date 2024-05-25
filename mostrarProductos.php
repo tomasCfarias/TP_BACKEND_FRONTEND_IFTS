@@ -46,7 +46,10 @@
     <div class="content">
         <div class="container-top">
             <h1>Productos</h1>
+            <div>
+            <a class="button" href="nuevacategoria.php">Nueva Categoría</a>
             <a class="button" href="subirProducto.php">Nuevo Articulo</a>
+        </div>
         </div>
     <table id="myTable" class="table-products">
         <thead>

@@ -43,7 +43,8 @@ if ($result->num_rows > 0) {
         <div class="flex space-between">
             <div class="mr-2">Fecha de compra: <?php echo $row["fechaVenta"]?></div>
             <div> Precio total: $<?php echo $row["preciototal"]?></div>
-            <a class="ml-auto mr-2" href="#">Ver detalle</a>
+            <a href="#" class=" ml-auto mr-2 mt-1 text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-small rounded-lg text-sm px-2 py-1 text-center">Ver detalle</a>
+
         </div>
             <?php }}?>
 </div>

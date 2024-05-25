@@ -45,7 +45,22 @@ $result = $conn ->  query($sql);
                     echo( '<option value='.$row["Nombre"].'>'.$row["Nombre"].'</option>');
                     }
                 }
+
+                $sql= "SELECT * from categorías";
+                $result = $conn ->  query($sql);
+
         ?>
+        </select>
+        <label for="categoria">Categoría</label>
+
+        <select id="categoria" name="categoria">
+            <?php 
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo( '<option value='.$row["Categoría"].'>'.$row["Categoría"].'</option>');
+                    }
+                }
+            ?>
         </select>
         <label for="precio">Precio</label>
         <input type="number" name="precio" id="precio" required>
