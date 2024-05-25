@@ -48,14 +48,7 @@ while ($row = $result->fetch_assoc()) {
         include_once("api/navbartiendatailwind.php");
         ?>
         <div class="ml-8 mr-8 border rounded">
-            <div class="content">
-                <table class="table-products">
-                    <thead>
-                        <tr>
-                            <a href="./compras.php?user=<?php echo $user_id; ?>">VOLVER</a>
-                        </tr>
-                    </thead>
-                    <tbody>
+                        <a class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mt-2 ml-2 px-3 py-1.5 text-center"href="./compras.php?user=<?php echo $user_id; ?>">Volver</a>
                         <?php
 
                         $totalCompra = 0;
@@ -66,25 +59,21 @@ while ($row = $result->fetch_assoc()) {
                             $sql = "SELECT Name,price,img_url FROM productos WHERE Id = $idProducto;";
                             $req = $conn->query($sql);
                             $result = mysqli_fetch_row($req);
-
-                            echo "<tr>";
-                            echo "<td data-label='Imagen'><img src='./img/" . $result[2] . " " . "' alt='Imagen del producto' id='imagen_venta'></td>";
-                            echo "<td data-label='Name' class ='col1' >" . "<p id='id_venta'>#" . $idProducto . "</p></br>" . $result[0] . " X " . $cantidad . "</td>"; //result[0] es el nombre
-                            echo "<td data-label='Precio'>" . "Precio Unidad: $" . $result[1] . "</br>" . "<p id='valor_total'>Precio Total: $" . $cantidad * $result[1] . "</p>" . "</td>";
-                            echo "</tr>";
+                            ?> 
+                            <div class='flex border mx-2 my-2 justify-between'>
+                            <div class="flex">
+                            <img class='max-h-48 w-auto p-8 rounded-t-lg'src='<?php echo('img/'.$result[2]) ?>'alt='Imagen del producto' id='imagen_venta'>
+                            <p class="self-center font-bold text-lg"> <?php echo($result[0] . " x". $cantidad)?> </p>
+                            </div>
+                            <div class="self-center mx-2">
+                            <p>Precio Unidad: $<?php echo $result[1] ?></p>
+                            <p class="font-bold"> Precio Total: $<?php echo $result[1] * $cantidad ?></p>
+                            </div>
+                            </div>
+                            <?php
                             $totalCompra += $cantidad * $result[1];
-                        }
-                        echo "<tr>";
-                        echo "<td data-label='Precio'></td>"; //no se como poner valor total en la columan 3 por css
-                        echo "<td data-label='Precio'></td>";
-                        echo "<td data-label='Precio'>" . "<p id='valor_total'>Total Compra: $" . $totalCompra . "</p>" . "</td>";
-                        echo "</tr>";
-
+                         }
                         ?>
-                    </tbody>
-                </table>
-            </div>
-
         </div>
         <?php
         include("api/footertienda.php")
