@@ -55,10 +55,13 @@
             return $data;
         }
 
-        function getVentasPorDiaDeMayo($conn) {
+        function getVentasPorDiaDeMesActual($conn) {
+
+            $month = date('m');
+            $year = date('Y');
             $sql = "SELECT DAY(fechaVenta) AS dia, SUM(preciototal) AS total_ventas
                     FROM ventas
-                    WHERE MONTH(fechaVenta) = 5 AND YEAR(fechaVenta) = 2024
+                    WHERE MONTH(fechaVenta) = $month AND YEAR(fechaVenta) = $year
                     GROUP BY DAY(fechaVenta)
                     ORDER BY dia";
             
@@ -111,7 +114,7 @@
 
         $productosMasVendidos = getProductosMasVendidos($conn);
         $top_clientes = getTopClientes($conn);
-        $ventasPorDiaDeMayo = getVentasPorDiaDeMayo($conn);
+        $ventasPorDiaDeMayo = getVentasPorDiaDeMesActual($conn);
         $productosMasVisitados = getProductosMasVisitados($conn);
         $ventasPorCategoria = getVentasPorCategoria($conn);
         
