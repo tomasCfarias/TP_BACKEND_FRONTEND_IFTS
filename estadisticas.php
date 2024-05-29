@@ -37,10 +37,10 @@
             return $data;
         }
         function getTopClientes($conn) {
-            $sql = "SELECT u.username, SUM(v.preciototal) AS total_compras
+            $sql = "SELECT u.email, SUM(v.preciototal) AS total_compras
                 FROM ventas v
                 JOIN usuarios u ON v.idCliente = u.id
-                GROUP BY v.idCliente, u.username
+                GROUP BY v.idCliente
                 ORDER BY total_compras DESC
                 LIMIT 3";
     

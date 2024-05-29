@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             // Procesar datos para el gráfico de los mejores clientes
-            const clientesLabels = data.topClientes.map(item => item.username);
+            const clientesLabels = data.topClientes.map(item => item.email);
             const clientesValues = data.topClientes.map(item => item.total_compras);
 
             // Crear gráfico de los mejores clientes
