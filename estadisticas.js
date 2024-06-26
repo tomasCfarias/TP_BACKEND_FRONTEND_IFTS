@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
-            console.log(data); // Verifica los datos recibidos
 
             if (!data.topVentas || !data.topClientes || !data.ventasPorDiaDeMayo || !data.prodMasVisitados || !data.ventasPorCategoria) {
                 throw new Error('Formato de datos incorrecto');
@@ -66,11 +65,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
             });
-
-            const ventasLabels = data.ventasPorDiaDeMayo.map(item => item.dia + "/05/2024");
+            
+            const month = new Date().getMonth() + 1
+            const ventasLabels = data.ventasPorDiaDeMayo.map(item => item.dia + `/${month}/2024`);
             const ventasValues = data.ventasPorDiaDeMayo.map(item => item.total_ventas);
 
-            // Crear gráfico de ventas por día en mayo
+            // Crear gráfico de ventas por día en el mes
             const ctxVentas = document.getElementById('ventasPorDiaDeMesChart').getContext('2d');
             new Chart(ctxVentas, {
                 type: 'bar',

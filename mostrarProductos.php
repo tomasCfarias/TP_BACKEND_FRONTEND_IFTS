@@ -90,7 +90,7 @@ if ($result->num_rows > 0) {
         echo "<td data-label='Descripción'>" . $row["description"] ." ". "</td>";
         echo "<td data-label='Proveedor'>" . $nombreproveedor ." ". "</td>";
         echo "<td data-label='Estado'>" . $estado ."</td>";
-        echo "<td data-label='Accion'><a href='modificarProducto.php?id=" . $row['Id'] . "' id = 'crudM'>MODIFICAR</a></td>";
+        echo "<td data-label='Accion'><a href='modificarProducto.php?id=" . $row['Id'] . "' id = 'crudM'>Modificar</a></td>";
 
         if ($estado == "Activo") {
             echo "<td data-label='Accion'><a href='borrarProducto.php?estado=1&id=" . $row['Id'] . "'id='crudBorrar'>Pausar</a></td>";

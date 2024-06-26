@@ -80,7 +80,7 @@
             $sql = "SELECT Name, visitas
                     FROM productos
                     ORDER BY visitas DESC
-                    LIMIT 5";
+                    LIMIT 10";
         
             $result = $conn->query($sql);
             if (!$result) {
