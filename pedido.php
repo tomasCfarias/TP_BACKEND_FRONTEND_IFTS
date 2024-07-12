@@ -52,7 +52,7 @@ $result = $conn ->  query($sql);
                     ?>
                 </select>
                 <label for="cantidad">Cantidad</label>
-                <input type="text" name="cantidad" id="cantidad">
+                <input type="text" name="cantidad" id="cantidad" required>
                 <button class="QuitarProducto" id="p-0">Quitar Producto</button>
             </div>
         </div>

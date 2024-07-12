@@ -42,10 +42,12 @@ if (isset($_GET["user"])) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
-                    <div class="flex space-between">
-                        <div class="mr-2">Fecha de compra: <?php echo $row["fechaVenta"] ?></div>
-                        <div> Precio total: $<?php echo $row["preciototal"] ?></div>
-                        <a href="detalleHistorialCompras.php?id=<?php echo $row['IdVenta']; ?>" class="ml-auto mr-2 mt-1 text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-small rounded-lg text-sm px-2 py-1 text-center">Ver detalle</a>
+                    <div class="flex space-between border p-5">
+                        <div>
+                        <div class="mr-2 "><span class="font-bold">Fecha de compra:</span> <?php echo $row["fechaVenta"] ?></div>
+                        <div class="font-bold"> Precio total: $<?php echo $row["preciototal"] ?></div>
+                        </div>
+                        <a href="detalleHistorialCompras.php?id=<?php echo $row['IdVenta']; ?>" class="ml-auto mr-2 mt-1 text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-small content-center rounded-lg text-sm px-3 py-1 text-center">Ver detalle</a>
                     </div>
             <?php }
             } ?>

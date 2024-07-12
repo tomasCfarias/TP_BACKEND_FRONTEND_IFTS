@@ -6,7 +6,7 @@ function conexion() {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $db = "iftsnew";
+    $db = "ifts";
    
     $conn = new mysqli($servername, $username, $password, $db);
 

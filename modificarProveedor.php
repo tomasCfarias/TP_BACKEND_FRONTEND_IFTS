@@ -78,4 +78,7 @@ $conn->close();
     </form>
 
 </body>
+<script src="navbar.js"></script>
+<script src="./api/LoadNotification.js"></script>
+
 </html>

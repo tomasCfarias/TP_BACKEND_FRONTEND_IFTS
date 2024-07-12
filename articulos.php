@@ -62,33 +62,6 @@
                 <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center disabled:opacity-25" <?php if(empty($_SESSION["login_user_tienda"])) {?> disabled <?php } ?> value="Filtrar">Filtrar</button>
             </ul>
         </form>
-        
-        <form id = "order_form">
-            <ul>
-                <b>Ordenar por</b>
-                <li><input type="radio" class="mr-1" name="orden" value="1">Alfabético</li>
-                <li><input type="radio" class="mr-1" name="orden" value="2">Mas caros</li>
-                <li><input type="radio" class="mr-1" name="orden" value="3">Mas baratos</li>
-                <button id="form_btn" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center disabled:opacity-25" <?php if(empty($_SESSION["login_user_tienda"])) {?> disabled <?php } ?> value="Filtrar">Ordenar</button>
-            </ul>
-        </form>
-        <!--    
-            <label for="precio">Precio maximo</label>
-                <li><input name="Precio" type="range" min="1" max="10000" value="50"></li>
-                <button type="submit" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Filtrar">Filtrar</button>
-                </ul>
-            </form>
-        
-        <b>Ordenar por</b>
-            <form action="" method="get">
-                <ul>
-                <li><input type="checkbox" class="mr-1">Precio (Menor a mayor)</li>
-                <li><input type="checkbox" class="mr-1">Precio (Mayor a menor)</li>
-                <li><input type="checkbox" class="mr-1">Mas vendidos</li>
-                <input type="button" class="text-white bg-blue-700 hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg my-2 text-sm px-5 py-1 text-center" value="Ordenar">
-                </ul>
-            </form>
-        -->
     </div>
     </div>
     <section class="my-2 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">

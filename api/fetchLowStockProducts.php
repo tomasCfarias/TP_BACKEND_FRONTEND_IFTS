@@ -10,7 +10,7 @@
         while ($row = $result->fetch_assoc()) {
             $name = $row["Name"];
             $url = "#";
-            $html = "<li>Atención! El producto <b>" .$row["Name"]."</b> Tiene bajo stock. (".$row["quantity"].") <b><a href= ".$url.">Cargar pedido</a></b></li>";
+            $html = "<li>Atención! El producto <b>" .$row["Name"]."</b> Tiene bajo stock. (".$row["quantity"].")</li>";
 
             //Hace una llamada para verificar que no haya una notificacion del mismo producto
             $sql = "SELECT * from notificaciones WHERE Producto = '$name'";

@@ -50,28 +50,34 @@ const guardarPedido = async () => {
     
     let listaPedido = []
     
-    productName.map((product, i) => {
-     listaPedido.push({'producto' : (product.selectedOptions[0].innerText)})
-    }) 
-    
-    let i = 0
-    productQuantity.forEach(p => {
-        listaPedido[i] = {...listaPedido[i], 'cantidad': p.value}
-        i++
-    })
+    if (!Array.from(productQuantity).some(p => p.value == "")) {
 
-    
-    await fetch(`./api/guardarPedido.php?id=${idProveedor}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(listaPedido)
+        productName.map((product) => {
+            listaPedido.push({'producto' : (product.selectedOptions[0].innerText)})
+        }) 
+        
+        let i = 0
+        productQuantity.forEach(p => {
+            listaPedido[i] = {...listaPedido[i], 'cantidad': p.value}
+            i++
+        })
+        
+        
+        await fetch(`./api/guardarPedido.php?id=${idProveedor}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(listaPedido)
         }).then(
             window.location.href ="proveedores.php"
         )
-
-}
+        
+    }
+    else {
+        alert("Complete todos los campos.")
+    }
+    }
 
 
 submitBtn.addEventListener("click", (e) => {
