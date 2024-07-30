@@ -99,9 +99,6 @@ $result = $conn->query($sql);
     </div>
     <script src="navbar.js"></script>
     <script src="ventas.js"></script>
-    <script src="./api/LoadNotification.js"></script>
-
-
-    
+    <script src="./api/LoadNotification.js"></script>    
 </body>
 </html>
