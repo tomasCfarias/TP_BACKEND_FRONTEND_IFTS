@@ -22,6 +22,7 @@
     $email = $_POST['email'];
     $telefono = $_POST['telefono'];
     $mensaje = $_POST['mensaje'];   
+    $id = $_POST["id"];
 
     try{
 
@@ -30,18 +31,18 @@
         $mail->isSMTP();
         $mail -> Host = 'smtp.gmail.com';
         $mail -> SMTPAuth = true;
-        $mail -> Username = 'germanluisponzio@gmail.com';
-        $mail -> Password = '';
+        $mail -> Username = 'ianbruzzese@gmail.com';
+        $mail -> Password = "gpbj gjfo pfhv feiy";
         $mail -> SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail ->setFrom('pepito@gmail.com', 'Email de prueba');
-        $mail -> addAddress('germanluisponzio@gmail.com', ' Pepito new style');
+        $mail ->setFrom($email, $nombre);
+        $mail -> addAddress('ianbruzzese@gmail.com', ' Soporte Eshop');
 
         $mail -> isHTML(true);
         $mail -> Subject =  $nombre.  ' Quiere comunicarse con vos! ';
         //$mail -> Body = 'Prueba de email desde el body';
-        $mail -> Body = '<br>Mensaje: ' . $mensaje .'<br>Email: ' . $email . '<br>Teléfono: ' . $telefono;
+        $mail -> Body = '<br>Id Usuario: '.$id.' <br>Email: ' . $email . '<br>Teléfono: ' . $telefono . '<br>' . $mensaje;
         $mail -> send();
 
         //echo 'Correo enviado';
