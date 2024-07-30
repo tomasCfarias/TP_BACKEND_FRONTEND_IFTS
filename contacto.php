@@ -33,7 +33,8 @@
         <div class="contact-wrapper">
             <div class="contact-form">
                 <form id="formContacto" method="post" action="./email/index.php">
-
+                    
+                    <input type="hidden" name="id" value="<?= $_SESSION["userid_tienda"] ?>"><br>
                     <div class="mb-3">
 
                         <label for="fullname" class="form-label">Nombre:</label>
