@@ -3,7 +3,7 @@
 
 function conexion() {
 
-    $servername = "localhost";
+    $servername = "localhost:3308";
     $username = "root";
     $password = "";
     $db = "ifts";
