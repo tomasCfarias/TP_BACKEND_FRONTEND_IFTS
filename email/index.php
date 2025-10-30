@@ -4,8 +4,8 @@
     $conn = conexion();
 
     session_start();
-    if(!isset($_SESSION['login_user'])){ //if login in session is not set
-    header("Location: login.php");
+    if(!isset($_SESSION['login_user_tienda'])){ //if login in session is not set
+    header("Location: login-tienda.php");
     }
 
 

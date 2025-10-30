@@ -4,8 +4,8 @@
     $conn = conexion();
 
     session_start();
-    if(!isset($_SESSION['login_user'])){ //if login in session is not set
-    header("Location: login.php");
+    if(!isset($_SESSION['login_user_tienda'])){ //if login in session is not set
+    header("Location: login-tienda.php");
     }
 ?>
 
@@ -34,7 +34,7 @@
             <div class="contact-form">
                 <form id="formContacto" method="post" action="./email/index.php">
                     
-                    <input type="hidden" name="id" value="<?= $_SESSION["userid_tienda"] ?>"><br>
+                    <input type="hidden" name="id" value="<?= $_SESSION["userid_tienda"] ?>">
                     <div class="mb-3">
 
                         <label for="fullname" class="form-label">Nombre:</label>

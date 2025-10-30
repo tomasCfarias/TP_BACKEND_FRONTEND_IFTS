@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2024 a las 00:42:15
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Jun 26, 2024 at 06:21 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `ifts`
+-- Database: `ifts`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `admins`
+-- Table structure for table `admins`
 --
 
 CREATE TABLE `admins` (
@@ -34,7 +34,7 @@ CREATE TABLE `admins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `admins`
+-- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`User`, `Password`, `Id`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `admins` (`User`, `Password`, `Id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorías`
+-- Table structure for table `categorías`
 --
 
 CREATE TABLE `categorías` (
@@ -52,16 +52,42 @@ CREATE TABLE `categorías` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `categorías`
+-- Dumping data for table `categorías`
 --
 
 INSERT INTO `categorías` (`id`, `Categoría`) VALUES
-(1, 'Remeras');
+(1, 'Remeras'),
+(2, 'Pantalones'),
+(3, 'Camperas');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detallepedidoproveedor`
+-- Table structure for table `contacto`
+--
+
+CREATE TABLE `contacto` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `mensaje` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contacto`
+--
+
+INSERT INTO `contacto` (`id`, `nombre`, `email`, `telefono`, `mensaje`) VALUES
+(1, 'german', 'german.l.ponzio@hotmail.com', 46457371, 'Hola quiero obtener informacion '),
+(2, 'Ramiro', 'ramiro@gmail.com', 15634567, 'Quisiera obtener mas informacion '),
+(3, 'Juan', 'juan@gmail.com', 1532617895, 'Hola buenas tardes, quisiera saber cuanto esta la '),
+(4, 'Juan', 'Juan@juanhotmail.com', 124354653, 'Hola quisiera tener informacion');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detallepedidoproveedor`
 --
 
 CREATE TABLE `detallepedidoproveedor` (
@@ -70,10 +96,45 @@ CREATE TABLE `detallepedidoproveedor` (
   `cantidadProducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `detallepedidoproveedor`
+--
+
+INSERT INTO `detallepedidoproveedor` (`idVenta`, `idProducto`, `cantidadProducto`) VALUES
+(3, 33, 3),
+(3, 35, 3),
+(3, 36, 3),
+(3, 43, 3),
+(4, 42, 15),
+(4, 44, 15),
+(4, 50, 40),
+(5, 42, 100),
+(5, 50, 100),
+(5, 47, 100),
+(6, 46, 5),
+(6, 44, 5),
+(7, 50, 10),
+(7, 49, 10),
+(7, 52, 10),
+(8, 36, 10),
+(8, 41, 15),
+(8, 55, 10),
+(9, 35, 12),
+(9, 36, 12),
+(9, 43, 12),
+(10, 35, 4),
+(10, 33, 4),
+(10, 36, 4),
+(10, 43, 4),
+(11, 33, 12),
+(11, 53, 2),
+(11, 48, 10),
+(11, 36, 4);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalleventas`
+-- Table structure for table `detalleventas`
 --
 
 CREATE TABLE `detalleventas` (
@@ -84,7 +145,7 @@ CREATE TABLE `detalleventas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `detalleventas`
+-- Dumping data for table `detalleventas`
 --
 
 INSERT INTO `detalleventas` (`id`, `idVenta`, `idProducto`, `cantidad`) VALUES
@@ -118,26 +179,90 @@ INSERT INTO `detalleventas` (`id`, `idVenta`, `idProducto`, `cantidad`) VALUES
 (43, 31, 35, 2),
 (44, 32, 33, 11),
 (45, 33, 33, 1),
-(46, 34, 33, 3);
+(46, 34, 33, 3),
+(47, 35, 36, 1),
+(48, 35, 33, 1),
+(49, 36, 33, 1),
+(50, 37, 44, 1),
+(51, 38, 44, 8),
+(52, 39, 42, 96),
+(53, 40, 33, 1),
+(54, 41, 41, 1),
+(55, 42, 42, 1),
+(56, 42, 46, 1),
+(57, 43, 43, 1),
+(58, 44, 36, 1),
+(59, 45, 42, 2),
+(60, 46, 41, 92),
+(61, 47, 36, 9),
+(62, 48, 36, 72),
+(63, 49, 36, 1),
+(64, 50, 46, 17),
+(65, 51, 43, 3),
+(66, 51, 49, 1),
+(67, 52, 33, 5),
+(68, 53, 46, 1),
+(69, 54, 43, 90),
+(70, 55, 48, 47),
+(71, 56, 43, 1),
+(72, 57, 33, 1),
+(73, 58, 41, 1),
+(74, 59, 41, 1),
+(75, 59, 42, 1),
+(76, 59, 44, 1),
+(77, 59, 58, 4),
+(78, 60, 35, 4),
+(79, 60, 58, 14),
+(80, 61, 47, 16),
+(81, 62, 51, 14),
+(82, 63, 56, 14);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pedidoproveedor`
+-- Table structure for table `notificaciones`
+--
+
+CREATE TABLE `notificaciones` (
+  `id` int(11) NOT NULL,
+  `Texto` varchar(255) NOT NULL,
+  `is_read` int(11) NOT NULL,
+  `Tipo` text NOT NULL,
+  `Producto` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pedidoproveedor`
 --
 
 CREATE TABLE `pedidoproveedor` (
   `idProveedor` int(11) NOT NULL,
   `idPedido` int(11) NOT NULL,
   `precioPedido` int(11) NOT NULL,
-  `fechaPedido` date NOT NULL DEFAULT current_timestamp(),
-  `fechaEntrega` date NOT NULL DEFAULT current_timestamp()
+  `fechaPedido` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pedidoproveedor`
+--
+
+INSERT INTO `pedidoproveedor` (`idProveedor`, `idPedido`, `precioPedido`, `fechaPedido`) VALUES
+(1, 3, 19702, '2024-05-24'),
+(2, 4, 5000, '2024-05-24'),
+(2, 5, 450000, '2024-05-24'),
+(2, 6, 15000, '2024-05-24'),
+(2, 7, 55000, '2024-05-24'),
+(1, 8, 49520, '2024-05-24'),
+(1, 9, 56424, '2024-05-29'),
+(1, 10, 78808, '2024-05-29'),
+(1, 11, 207008, '2024-06-24');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
@@ -150,39 +275,43 @@ CREATE TABLE `productos` (
   `estado` int(11) NOT NULL,
   `Categoría` varchar(255) NOT NULL,
   `Eliminado` int(11) NOT NULL,
-  `IdProveedor` int(11) NOT NULL
+  `IdProveedor` int(11) NOT NULL,
+  `visitas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Dumping data for table `productos`
 --
 
-INSERT INTO `productos` (`Name`, `Id`, `quantity`, `price`, `description`, `img_url`, `estado`, `Categoría`, `Eliminado`, `IdProveedor`) VALUES
-('Remera Boca', 33, 10, 15000, 'Remera', 'IMG-652d5d229d7be2.96400195.jpg', 0, '1', 0, 1),
-('Remera Huracan', 35, 144, 2000, 'Remera Huracan', 'IMG-652d5d606745e6.63913325.jpg', 1, '1', 0, 1),
-('Remera Lanus', 36, 87, 1002, 'Remera Lanus', 'IMG-652d5d746875f8.47067632.jpg', 0, '1', 0, 1),
-('Nueva Remera', 37, 7, 150, 'dsadasd', '', 0, '1', 0, 2),
-('Remera Boca 2', 41, 95, 1500, 'Remera Boca 2', 'IMG-652d9062d554f9.36604174.jpg', 0, '1', 0, 1),
-('Remera San Lorenzo', 42, 100, 1500, 'Remera San Lorenzo', 'IMG-652d90775d3b74.66510837.jpg', 0, '1', 0, 2),
-('Remera Platense', 43, 97, 1700, 'Remera Platense', 'IMG-652d90acb8c867.50135960.jpg', 0, '1', 0, 1),
-('Remera Arsenal', 44, 10, 1500, 'Remera Arsenal', 'IMG-652d90c8b42f23.10171942.jpg', 0, '1', 0, 2),
-('remera ', 45, 98, 1000, 'hughui', 'IMG-65328966e344b2.60866561.jpg', 1, '1', 0, 1),
-('Remera DyJ', 46, 20, 1500, 'Remera DyJ', 'IMG-654e4fa6afecd3.89814507.jpg', 0, '1', 0, 2),
-('Remera Velez', 47, 20, 1000, 'Remera Velez', 'IMG-654e506e90d355.27759854.jpg', 0, '1', 0, 2),
-('Remera River', 48, 50, 2000, 'Remera River', 'IMG-654e507c3160f7.66700808.jpg', 0, '1', 0, 1),
-('Remera Argentinos Jrs', 49, 50, 2000, 'Remera Argentinos Jrs', 'IMG-654e50c20bc2c3.91180942.jpg', 0, '1', 0, 2),
-('Remera Independiente', 50, 15, 2000, 'Remera Independiente', 'IMG-654e51355e5a57.70504486.jpg', 0, '1', 0, 2),
-('Remera Rosario Central', 51, 50, 2000, 'Remera Rosario Central', 'IMG-654e5181e0ce89.54092786.jpg', 0, '1', 0, 1),
-('Remera Unión', 52, 100, 1500, 'Remera Unión', 'IMG-654e519a9df507.83163984.jpg', 0, '1', 0, 2),
-('Remera Banfield', 53, 100, 1500, 'Remera Banfield', 'IMG-654e51ad0468b4.00232695.jpg', 0, '1', 0, 1),
-('Remera Atl. Tucumán', 54, 25, 2500, 'Remera Atlético Tucumán', 'IMG-654e51dbbde3e8.79212809.jpg', 0, '1', 0, 2),
-('Remera Racing', 55, 10, 1700, 'Remera Racing', 'IMG-654e51f93beaa0.95565677.jpg', 0, '1', 0, 1),
-('remera2', 56, 15, 1000, '200', 'IMG-6556a6cc671c81.12945246.jpg', 0, '1', 0, 2);
+INSERT INTO `productos` (`Name`, `Id`, `quantity`, `price`, `description`, `img_url`, `estado`, `Categoría`, `Eliminado`, `IdProveedor`, `visitas`) VALUES
+('Remera Boca', 33, 30, 15000, 'Una remera de boca original, de la temporada actual.', 'IMG-652d5d229d7be2.96400195.jpg', 0, '1', 0, 1, 12),
+('Remera Huracan', 35, 140, 2000, 'Remera Huracan', 'IMG-652d5d606745e6.63913325.jpg', 0, '1', 0, 1, 1),
+('Remera Lanus', 36, 30, 1002, 'Remera Lanus', 'IMG-652d5d746875f8.47067632.jpg', 0, '1', 0, 1, 3),
+('Nueva Remera', 37, 7, 150, 'dsadasd', '', 1, '1', 0, 2, 0),
+('Remera Boca 2', 41, 30, 1500, 'Remera Boca 2', 'IMG-652d9062d554f9.36604174.jpg', 0, '1', 0, 1, 4),
+('Remera San Lorenzo', 42, 30, 1500, 'Remera San Lorenzo', 'IMG-652d90775d3b74.66510837.jpg', 0, '1', 0, 2, 3),
+('Remera Platense', 43, 30, 1700, 'Remera Platense', 'IMG-652d90acb8c867.50135960.jpg', 0, '1', 0, 1, 4),
+('Remera Arsenal', 44, 30, 1500, 'Remera Arsenal', 'IMG-652d90c8b42f23.10171942.jpg', 0, '1', 0, 2, 3),
+('remera ', 45, 98, 1000, 'hughui', 'IMG-65328966e344b2.60866561.jpg', 1, '1', 0, 1, 0),
+('Remera DyJ', 46, 30, 1500, 'Remera DyJ', 'IMG-654e4fa6afecd3.89814507.jpg', 0, '1', 0, 2, 1),
+('Remera Velez', 47, 30, 1000, 'Remera Velez', 'IMG-654e506e90d355.27759854.jpg', 0, '1', 0, 2, 1),
+('Remera River', 48, 30, 2000, 'Remera River', 'IMG-654e507c3160f7.66700808.jpg', 0, '1', 0, 1, 1),
+('Remera Argentinos Jrs', 49, 49, 2000, 'Remera Argentinos Jrs', 'IMG-654e50c20bc2c3.91180942.jpg', 0, '1', 0, 2, 0),
+('Remera Independiente', 50, 15, 2000, 'Remera Independiente', 'IMG-654e51355e5a57.70504486.jpg', 0, '1', 0, 2, 0),
+('Remera Rosario Central', 51, 36, 2000, 'Remera Rosario Central', 'IMG-654e5181e0ce89.54092786.jpg', 0, '1', 0, 1, 1),
+('Remera Unión', 52, 100, 1500, 'Remera Unión', 'IMG-654e519a9df507.83163984.jpg', 0, '1', 0, 2, 0),
+('Remera Banfield', 53, 100, 1500, 'Remera Banfield', 'IMG-654e51ad0468b4.00232695.jpg', 0, '1', 0, 1, 0),
+('Remera Atl. Tucumán', 54, 25, 2500, 'Remera Atlético Tucumán', 'IMG-654e51dbbde3e8.79212809.jpg', 0, '1', 0, 2, 0),
+('Remera Racing', 55, 10, 1700, 'Remera Racing', 'IMG-654e51f93beaa0.95565677.jpg', 0, '1', 0, 1, 0),
+('remera2', 56, 30, 1000, '200', 'IMG-6556a6cc671c81.12945246.jpg', 0, '1', 0, 2, 1),
+('Remera Test', 57, 100, 1500, 'Remera de prueba', '', 1, '', 0, 3, 0),
+('Pantalon Nike', 58, 82, 1000, 'Pantalon Nike', 'IMG-6652266f529319.49892370.png', 0, '2', 0, 1, 4),
+('Campera Nike Negra', 59, 50, 5000, 'Campera nike color negro', 'IMG-667c3b4484de52.35457891.jpg', 0, '3', 0, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `proveedores`
+-- Table structure for table `proveedores`
 --
 
 CREATE TABLE `proveedores` (
@@ -193,17 +322,18 @@ CREATE TABLE `proveedores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `proveedores`
+-- Dumping data for table `proveedores`
 --
 
 INSERT INTO `proveedores` (`id`, `Nombre`, `Email`, `Telefono`) VALUES
-(1, 'Nike', 'support@nike.com', 1557465383),
-(2, 'Adidas', 'support@adidas.com', 1554579214);
+(1, 'Nike', 'support@nike.com', 1557465385),
+(2, 'Adidas', 'support@adidas.com', 1554579214),
+(3, 'Puma', 'contact@puma.com', 1241241241);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -214,7 +344,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `username`, `password`) VALUES
@@ -224,12 +354,13 @@ INSERT INTO `usuarios` (`id`, `email`, `username`, `password`) VALUES
 (34, 'ian2@gmail.com', 'Ian', '$2y$10$QDU/XgT6cvUjWiz8sVqovOAW1UhsTwCp/lXfbcdqxeBPJ6UnfAPnm'),
 (35, 'ian3@gmail.com', 'ian', '$2y$10$WEeJbO3wZCxJ27/Yr4Z5zuEGVR3kT5pdPh7M1yJxPa3hqvSNGTTwK'),
 (36, 'ian8@gmail.com', '3321312', '$2y$10$bOZp5DixXHXq4E4S3x/Y1.HDEJutAXSwsUcw2DBvC6PH4L60EjEUy'),
-(37, 'ian22@gmail.com', 'Ian', '$2y$10$hOD3e1vmQD4UMaUUQ6bKNO.VZd9Rsn6UEHdsecZsbM1XbvqVAxrDa');
+(37, 'ian222@gmail.com', 'Abrz', '$2y$10$BIrDxPhz.CFKkVAt10JDhuTNiDHvfXaYU5KK4N4xWsnC88B6QmlG2'),
+(38, 'ian23@gmail.com', 'Ian', '$2y$10$8uWyXyg17Y5G85cSrST9f.CV6izMpLRNbvoB7D14g6/zVYx1aCPvG');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ventas`
+-- Table structure for table `ventas`
 --
 
 CREATE TABLE `ventas` (
@@ -237,127 +368,151 @@ CREATE TABLE `ventas` (
   `IdCliente` int(11) NOT NULL,
   `preciototal` int(11) NOT NULL,
   `fechaVenta` date NOT NULL DEFAULT current_timestamp(),
-  `fechaEntrega` date NOT NULL DEFAULT current_timestamp(),
-  `fechaEnvio` date NOT NULL DEFAULT current_timestamp()
+  `fechaEntrega` date DEFAULT NULL,
+  `fechaEnvio` date DEFAULT NULL,
+  `notificado` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `ventas`
+-- Dumping data for table `ventas`
 --
 
-INSERT INTO `ventas` (`IdVenta`, `IdCliente`, `preciototal`, `fechaVenta`, `fechaEntrega`, `fechaEnvio`) VALUES
-(12, 24, 50000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(13, 24, 200000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(14, 24, 4000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(15, 24, 2004, '2024-04-17', '2024-04-17', '2024-04-17'),
-(16, 24, 5006, '2024-04-17', '2024-04-17', '2024-04-17'),
-(17, 27, 107700, '2024-04-17', '2024-04-17', '2024-04-17'),
-(21, 24, 7704, '2024-04-17', '2024-04-17', '2024-04-17'),
-(22, 23, 32900, '2024-04-17', '2024-04-17', '2024-04-17'),
-(23, 23, 5002, '2024-04-17', '2024-04-17', '2024-04-17'),
-(24, 23, 16002, '2024-04-17', '2024-04-17', '2024-04-17'),
-(25, 23, 60412, '2024-04-17', '2024-04-17', '2024-04-17'),
-(26, 32, 1700, '2024-04-17', '2024-04-17', '2024-04-17'),
-(27, 32, 135000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(28, 33, 15000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(29, 32, 16002, '2024-04-17', '2024-04-17', '2024-04-17'),
-(30, 23, 3000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(31, 23, 4000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(32, 37, 165000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(33, 37, 15000, '2024-04-17', '2024-04-17', '2024-04-17'),
-(34, 37, 45000, '2024-04-17', '2024-04-17', '2024-04-17');
+INSERT INTO `ventas` (`IdVenta`, `IdCliente`, `preciototal`, `fechaVenta`, `fechaEntrega`, `fechaEnvio`, `notificado`) VALUES
+(56, 37, 1700, '2024-05-15', '2024-05-15', '2024-05-15', 1),
+(58, 37, 1500, '2024-05-15', '2024-05-24', '2024-05-21', 1),
+(59, 37, 8500, '2024-05-25', '0000-00-00', '0000-00-00', 1),
+(60, 38, 22000, '2024-05-29', '0000-00-00', '0000-00-00', 1),
+(61, 38, 16000, '2024-05-29', '0000-00-00', '0000-00-00', 1),
+(62, 37, 28000, '2024-06-23', '0000-00-00', '0000-00-00', 1),
+(63, 37, 14000, '2024-06-26', '0000-00-00', '0000-00-00', 1);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `admins`
+-- Indexes for table `admins`
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indices de la tabla `categorías`
+-- Indexes for table `categorías`
 --
 ALTER TABLE `categorías`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `detalleventas`
+-- Indexes for table `contacto`
+--
+ALTER TABLE `contacto`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `detalleventas`
 --
 ALTER TABLE `detalleventas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `notificaciones`
+--
+ALTER TABLE `notificaciones`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pedidoproveedor`
+--
+ALTER TABLE `pedidoproveedor`
+  ADD PRIMARY KEY (`idPedido`);
+
+--
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indices de la tabla `proveedores`
+-- Indexes for table `proveedores`
 --
 ALTER TABLE `proveedores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `ventas`
+-- Indexes for table `ventas`
 --
 ALTER TABLE `ventas`
   ADD PRIMARY KEY (`IdVenta`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `admins`
+-- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `categorías`
+-- AUTO_INCREMENT for table `categorías`
 --
 ALTER TABLE `categorías`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `detalleventas`
+-- AUTO_INCREMENT for table `contacto`
+--
+ALTER TABLE `contacto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `detalleventas`
 --
 ALTER TABLE `detalleventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT for table `notificaciones`
+--
+ALTER TABLE `notificaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+
+--
+-- AUTO_INCREMENT for table `pedidoproveedor`
+--
+ALTER TABLE `pedidoproveedor`
+  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- AUTO_INCREMENT de la tabla `proveedores`
+-- AUTO_INCREMENT for table `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT de la tabla `ventas`
+-- AUTO_INCREMENT for table `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `IdVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `IdVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
